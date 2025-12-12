@@ -1945,3 +1945,39 @@ Stockholm
 
 1989-04-04
 `;
+Stenungsunds Måleri AB
+556677-8899
+Aktiebolag
+Storgatan 1
+444 30
+Stenungsund
+0303-123 45
+
+
+http://example.com
+
+2000-01-01
+Göteborgs Fina Måleri AB
+556688-9900
+Aktiebolag
+Avenyn 1
+411 36
+Göteborg
+031-123 45 67
+
+
+http://gbgmaleri.se
+
+2000-01-01
+Malmö Färg & Tapet AB
+556699-0011
+Aktiebolag
+Stortorget 1
+211 22
+Malmö
+040-123 45 67
+
+
+http://malmomale.se
+
+2000-01-01
