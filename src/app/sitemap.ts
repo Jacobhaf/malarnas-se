@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Municipality routes
     const municipalities = getLocations().map((l) => ({
-        url: `${baseUrl}/malerifirma/${slufigy(l.lan)}/${slufigy(l.kommun)}`,
+        url: `${baseUrl}/${slufigy(l.kommun)}`,
         lastModified: new Date(),
     }));
 
