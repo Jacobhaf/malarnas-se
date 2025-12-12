@@ -1,5 +1,5 @@
 
-import { RAW_LOCATIONS } from '@/data/index';
+
 import { ALL_COMPANIES_RAW } from '@/data/index';
 import { Location, Company } from './types';
 import { slufigy, parseNumber } from './utils';
