@@ -1,12 +1,11 @@
-
-import CountyList from "@/components/CountyList";
-import { getCounties } from "@/lib/data";
+import CountyAccordion from "@/components/CountyAccordion";
+import { getLocations } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import TrustpilotWidget from "@/components/TrustpilotWidget";
 
 export default function Home() {
-  const counties = getCounties();
+  const locations = getLocations();
 
   return (
     <div className="min-h-screen">
@@ -63,16 +62,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Counties Section */}
+      {/* Counties Section with Accordion */}
       <section id="counties" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Hitta målare i ditt län</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Vi har samlat Sveriges bästa målerifirmor. Välj ditt län nedan för att komma igång.
+              Vi har samlat Sveriges bästa målerifirmor. Klicka på ditt län för att hitta din kommun.
             </p>
           </div>
-          <CountyList counties={counties} />
+          <CountyAccordion locations={locations} />
         </div>
       </section>
 
