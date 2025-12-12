@@ -1,6 +1,4 @@
-
-import { getCompanies, getCounties, getLocations, getMunicipalitySlugForCompany } from '@/lib/data';
-import { slufigy } from '@/lib/utils';
+import { getAllCompanies, getMunicipalityPaths } from '@/lib/company-data';
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,25 +12,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
     }));
 
-    // County routes
-    const counties = getCounties().map((county) => ({
-        url: `${baseUrl}/malerifirma/${slufigy(county)}`,
-        lastModified: new Date(),
-    }));
-
     // Municipality routes
-    const municipalities = getLocations().map((l) => ({
-        url: `${baseUrl}/${slufigy(l.kommun)}`,
+    const municipalityPaths = getMunicipalityPaths();
+    const municipalities = municipalityPaths.map((slug) => ({
+        url: `${baseUrl}/malerifirma/${slug}`,
         lastModified: new Date(),
     }));
 
-    // Company routes (Limited for safety/timeout in this environment, but logic holds)
-    // In a real large app, we might split sitemaps.
-    // We'll include all of them here since we have the data in memory.
-    const companies = getCompanies().map((c) => ({
-        url: `${baseUrl}/${getMunicipalitySlugForCompany(c)}/${slufigy(c.name)}`,
+    // Company routes
+    // For large sites, sitemaps are often split. Here we generate what we can.
+    // If > 50k URLs, this needs splitting.
+    const allCompanies = getAllCompanies();
+    const companyRoutes = allCompanies.map((c) => ({
+        url: `${baseUrl}/${c.municipalitySlug}/${c.companySlug}`,
         lastModified: new Date(),
     }));
 
-    return [...routes, ...counties, ...municipalities, ...companies];
+    return [...routes, ...municipalities, ...companyRoutes];
 }
