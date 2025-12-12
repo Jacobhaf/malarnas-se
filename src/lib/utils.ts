@@ -2,10 +2,9 @@
 export function slufigy(text: string): string {
     return text
         .toString()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove diacritics
         .toLowerCase()
         .trim()
-        .replace(/[åä]/g, 'a')
-        .replace(/[ö]/g, 'o')
         .replace(/\s+/g, '-')
         .replace(/[^\w-]+/g, '')
         .replace(/--+/g, '-');
