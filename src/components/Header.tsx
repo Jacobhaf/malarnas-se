@@ -1,5 +1,5 @@
-
 import Link from 'next/link';
+import Image from 'next/image';
 import { getCounties } from '@/lib/data';
 import { slufigy } from '@/lib/utils';
 
@@ -9,9 +9,15 @@ export default function Header() {
     return (
         <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-                <Link href="/" className="text-2xl font-black text-gray-900 flex items-center gap-2">
-                    <span className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">M</span>
-                    Målarnas.se
+                <Link href="/" className="flex items-center gap-2">
+                    <Image
+                        src="/logo.svg"
+                        alt="Målarnas.se Logo"
+                        width={140}
+                        height={40}
+                        priority
+                        className="h-10 w-auto"
+                    />
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-8">

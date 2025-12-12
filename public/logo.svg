@@ -1,9 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-  <rect width="512" height="512" rx="128" fill="#1e40af"/>
-  <path d="M160 360L352 360" stroke="white" stroke-width="32" stroke-linecap="round"/>
-  <path d="M192 416L320 416" stroke="white" stroke-width="32" stroke-linecap="round"/>
-  <path d="M256 96V360" stroke="#22c55e" stroke-width="48" stroke-linecap="round"/>
-  <path d="M256 96L192 160" stroke="#22c55e" stroke-width="48" stroke-linecap="round"/>
-  <path d="M256 96L320 160" stroke="#22c55e" stroke-width="48" stroke-linecap="round"/>
-  <path d="M120 200C120 200 160 120 256 120C352 120 392 200 392 200" stroke="white" stroke-width="32" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" fill="none">
+  <!-- Icon: Paintbrush -->
+  <g transform="translate(0, 5) scale(0.9)">
+      <!-- Handle -->
+      <path d="M25 5C20 5 16 9 16 14V35H34V14C34 9 30 5 25 5ZM25 12C26.6569 12 28 13.3431 28 15C28 16.6569 26.6569 18 25 18C23.3431 18 22 16.6569 22 15C22 13.3431 23.3431 12 25 12Z" fill="#111827"/>
+      
+      <!-- Metal Ferrule -->
+      <rect x="14" y="38" width="22" height="12" rx="1" fill="#1e40af"/>
+      <rect x="14" y="42" width="22" height="2" fill="#FFFFFF" fill-opacity="0.2"/>
+      <rect x="14" y="46" width="22" height="2" fill="#FFFFFF" fill-opacity="0.2"/>
+
+      <!-- Bristles -->
+      <path d="M15 54H35V72C35 74.2091 33.2091 76 31 76H19C16.7909 76 15 74.2091 15 72V54Z" fill="#111827"/>
+      <!-- Bristle Lines (Negative Space) -->
+      <rect x="19" y="60" width="2" height="10" rx="1" fill="#FFFFFF"/>
+      <rect x="24" y="58" width="2" height="14" rx="1" fill="#FFFFFF"/>
+      <rect x="29" y="60" width="2" height="10" rx="1" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Text: "Målarnas" Serif Bold -->
+  <text x="55" y="52" font-family="Times New Roman, serif" font-weight="bold" font-size="42" fill="#111827" letter-spacing="-1">Målarnas</text>
 </svg>

@@ -1,5 +1,5 @@
-
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
     return (
@@ -7,9 +7,14 @@ export default function Footer() {
             <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-4 gap-8 mb-12">
                     <div className="col-span-1 md:col-span-2">
-                        <Link href="/" className="text-2xl font-black text-white flex items-center gap-2 mb-4">
-                            <span className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">M</span>
-                            Målarnas.se
+                        <Link href="/" className="flex items-center gap-2 mb-4">
+                            <Image
+                                src="/logo-white.svg"
+                                alt="Målarnas.se"
+                                width={140}
+                                height={40}
+                                className="h-8 w-auto opacity-90 hover:opacity-100 transition-opacity"
+                            />
                         </Link>
                         <p className="max-w-md">
                             Vi hjälper dig att hitta rätt målerifirma för ditt projekt. Jämför lokala företag, läs omdömen och få kostnadsfria offerter snabbt och enkelt.
