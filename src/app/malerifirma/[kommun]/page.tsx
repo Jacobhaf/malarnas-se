@@ -38,9 +38,20 @@ export default function MunicipalityPage({ params }: { params: { kommun: string 
     const companies = getCompaniesByMunicipality(decodedKommun);
 
     if (companies.length === 0) {
-        // If no companies found in this slug (or slug is invalid), check if we should show a basic empty state or 404.
-        // Given we generate static params from existing data, this usually means 404 for random URLs.
-        notFound();
+        return (
+            <div className="container mx-auto px-4 py-20 text-center">
+                <h1 className="text-3xl font-bold mb-4">Inga målare hittades i denna kommun</h1>
+                <p className="text-gray-600 mb-8">Vi kunde inte hitta några registrerade målerifirmor för "{decodedKommun}".</p>
+                <Link href="/malerifirma" className="text-blue-600 hover:underline">
+                    &larr; Tillbaka till listan
+                </Link>
+                <div className="mt-12 p-4 bg-gray-100 rounded text-xs text-left font-mono overflow-auto max-h-40">
+                    <p>Debug Info:</p>
+                    <p>Slug received: {params.kommun}</p>
+                    <p>Decoded: {decodedKommun}</p>
+                </div>
+            </div>
+        );
     }
 
     const cityName = companies[0].city; // Use the city name from the first company data for display
