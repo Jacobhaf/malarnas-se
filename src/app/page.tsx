@@ -94,17 +94,7 @@ export default function Home() {
         </div>
       </section>
     </div>
-          Att anlita en professionell målare är en investering i ditt hem.Oavsett om det handlar om fasadmålning, tapetsering eller målning av snickerier, är det viktigt att hitta rätt kompetens till rätt pris.
-        </p >
-        <p>
-          Genom Målarnas.se kan du enkelt navigera bland lokala företag, läsa om deras tjänster och hitta kontaktuppgifter. Vi strävar efter att göra processen så smidig som möjligt för dig som beställare.
-        </p>
-        <h3>ROT-avdrag för måleriarbeten</h3>
-        <p>
-          Kom ihåg att du som privatperson ofta har rätt till ROT-avdrag för arbetskostnaden vid måleritjänster. Detta innebär att du kan dra av 30% av arbetskostnaden direkt på fakturan. Många av de företag vi listar är vana vid att hantera ROT-avdrag direkt åt dig.
-        </p>
-      </div >
-      </section >
-    </div >
+
+
   );
 }
