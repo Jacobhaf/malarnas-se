@@ -37,102 +37,103 @@ export const slugify = (text: string) => {
 };
 
 export const parseRawData = (): ExtendedCompany[] => {
-    const lines = RAW_CSV_DATA.split('\n');
+    const lines = RAW_CSV_DATA.split('\n').map(l => l.trim());
     const companies: ExtendedCompany[] = [];
 
-    // Skip header if it exists (Starts with BOLAGSNAMN)
-    let startIndex = 0;
-    if (lines[0].startsWith('BOLAGSNAMN')) {
-        startIndex = 1; // Skip header line
-    }
+    // Regex for OrgNr: 6 digits, hyphen/space/nothing, 4 digits. e.g 556723-9313
+    const orgNrRegex = /^\d{6}[-\s]?\d{4}$/;
 
-    // The format seems to vary. Based on the paste, it looks like blocks of 11 lines per company.
-    // EXCEPT the paste has newlines. Let's look closer.
-    // It's line-by-line fields.
-    /*
-    Name
-    Org
-    Type
-    Address
-    Zip
-    City
-    Phone
-    Fax (often empty)
-    Web (often empty)
-    Email (often empty)
-    Date
-    */
+    for (let i = 0; i < lines.length; i++) {
+        // Look for a line that looks like an OrgNr. 
+        // The line BEFORE it is the Company Name.
+        if (orgNrRegex.test(lines[i])) {
+            // Found an OrgNr at index i.
+            // Company Name is likely at i-1.
+            const name = lines[i - 1];
+            const orgNr = lines[i];
 
-    // Clean empty lines first to make it a strict stream
-    const cleanLines = lines.map(l => l.trim()).filter(l => l.length > 0);
+            // Safety check: Name should exist
+            if (!name) continue;
 
-    // Now we need to be careful. The user paste shows empty lines were removed in my `cleanLines` logic?
-    // Wait, in the provided text:
-    /*
-    Östernäs Måleri & Entreprenad Aktiebolag
-    556723-9313
-    Aktiebolag
-    Stationsvägen 55
-    184 40
-    Åkersberga
-    08-540 694 00 <-- Phone
-    <empty>
-    https://osternasmaleri.se <-- Web
-    <empty>
-    2007-02-16 <-- Date
-    */
+            // Extract subsequent fields based on their typical order relative to OrgNr
+            // OrgNr is at i
+            // i+1: Type (e.g. "Aktiebolag")
+            // i+2: Address (e.g "Stationsvägen 55")
+            // i+3: Zip (e.g "184 40")
+            // i+4: City (e.g "Åkersberga")
+            // i+5: Phone (e.g "08-540 694 00") OR empty
 
-    // The empty lines are significant as placeholders for missing data!
-    // I should re-read using the raw lines, skipping the very first header line.
+            // We need to be careful with optional fields like phone, empty lines, url, etc.
+            // However, looking at the dataset structure:
+            // Fields seem to be stored sequentially in the string blocks.
 
-    const rawDataLines = lines.slice(1); // Skip Header
+            const type = lines[i + 1] || "";
+            const address = lines[i + 2] || "";
+            const zip = lines[i + 3] || "";
+            const city = lines[i + 4] || "";
 
-    let currentBlock: string[] = [];
+            // After city (i+4), we have Phone, Fax, Website, Email, RegDate.
+            // But there are empty lines in between in the raw data!
+            // We need to scan forward from i+5 until we hit the next company (next OrgNr) or end.
 
-    for (let i = 0; i < rawDataLines.length; i++) {
-        // The pattern repeats every 11 lines in the raw text provided in the prompt?
-        // Let's verify with the first entry in raw-companies-list.ts
-        // Line 1: Östernäs...
-        // Line 2: 5567...
-        // Line 3: Aktiebolag
-        // Line 4: Stationsvägen 55
-        // Line 5: 184 40
-        // Line 6: Åkersberga
-        // Line 7: 08-540...
-        // Line 8: (empty) -> Fax
-        // Line 9: https://...
-        // Line 10: (empty) -> Email
-        // Line 11: 2007-02-16
+            // Let's grab everything from i+5 until we find a date-like string at the end of the block.
+            // Reg date format: YYYY-MM-DD
+            const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
-        // Yes, it is exactly 11 lines per record.
+            let phone = "";
+            let fax = "";
+            let website = "";
+            let email = "";
+            let regDate = "";
 
-        const chunk = rawDataLines.slice(i, i + 11);
-        if (chunk.length < 11) break; // End of file
+            // Scan ahead to find the reg date, usually within next 10 lines
+            let dateIndex = -1;
+            for (let j = i + 5; j < i + 15 && j < lines.length; j++) {
+                if (dateRegex.test(lines[j])) {
+                    regDate = lines[j];
+                    dateIndex = j;
+                    break;
+                }
+            }
 
-        const company: Company = {
-            name: chunk[0].trim(),
-            orgNr: chunk[1].trim(),
-            type: chunk[2].trim(),
-            address: chunk[3].trim(),
-            zip: chunk[4].trim(),
-            city: chunk[5].trim(),
-            phone: chunk[6].trim(),
-            fax: chunk[7].trim(),
-            website: chunk[8].trim(),
-            email: chunk[9].trim(),
-            regDate: chunk[10].trim(),
-        };
+            // If we found a date, the fields between City (i+4) and Date (dateIndex) are potential contacts
+            if (dateIndex > i + 4) {
+                const contactLines = lines.slice(i + 5, dateIndex).filter(l => l.length > 0);
 
-        // Only add if it looks valid
-        if (company.name && company.orgNr) {
-            companies.push({
-                ...company,
-                municipalitySlug: slugify(company.city),
-                companySlug: slugify(company.name)
-            });
+                // Heuristic basic assignment for contact details
+                contactLines.forEach(l => {
+                    if (l.startsWith("http") || l.startsWith("www")) {
+                        website = l;
+                    } else if (l.includes("@")) {
+                        email = l;
+                    } else if (/[0-9]/.test(l)) {
+                        // Start of phone number often 08-, 070-, etc.
+                        // If we haven't assigned phone yet, assume first number-heavy string is phone
+                        if (!phone) phone = l;
+                        else fax = l; // If phone taken, might be fax (rare, but whatever)
+                    }
+                });
+            }
+
+            // Validate we have a critical mass of data (Name + City at minimum for pages to work)
+            if (name && city) {
+                companies.push({
+                    name,
+                    orgNr,
+                    type,
+                    address,
+                    zip,
+                    city,
+                    phone,
+                    fax,
+                    website,
+                    email,
+                    regDate,
+                    municipalitySlug: slugify(city),
+                    companySlug: slugify(name)
+                });
+            }
         }
-
-        i += 10; // Increment loop by 10 (loop adds 1 more)
     }
 
     return companies;

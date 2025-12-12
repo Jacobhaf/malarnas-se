@@ -61,7 +61,7 @@ export default function CountyAccordion({ locations }: CountyAccordionProps) {
                                         {counties[county].map((loc) => (
                                             <Link
                                                 key={loc.kommun}
-                                                href={`/${slufigy(loc.kommun)}`}
+                                                href={`/malerifirma/${slufigy(loc.kommun)}`}
                                                 className="text-gray-600 hover:text-[#22c55e] hover:translate-x-1 transition-all flex items-center gap-2 group"
                                             >
                                                 <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#22c55e] transition-colors"></span>

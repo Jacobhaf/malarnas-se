@@ -14,7 +14,7 @@ export default function MunicipalityList({ municipalities, countySlug }: Municip
             {municipalities.map((m) => (
                 <Link
                     key={m.kommun}
-                    href={`/${slufigy(m.kommun)}`}
+                    href={`/malerifirma/${slufigy(m.kommun)}`}
                     className="text-sm text-gray-600 hover:text-primary hover:underline transition-colors py-1"
                 >
                     Målare i {m.kommun}
