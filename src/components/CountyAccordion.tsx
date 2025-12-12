@@ -61,32 +61,16 @@ export default function CountyAccordion({ locations, activeSlugs }: CountyAccord
                                     <div className="pt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-3 gap-x-6">
                                         {counties[county].map((loc) => {
                                             const slug = slufigy(loc.kommun);
-                                            // Assume active if undefined (backwards compat) or if included in list
-                                            const isActive = activeSlugs ? activeSlugs.includes(slug) : true;
-
-                                            if (isActive) {
-                                                return (
-                                                    <Link
-                                                        key={loc.kommun}
-                                                        href={`/malerifirma/${slug}`}
-                                                        className="text-gray-600 hover:text-[#22c55e] hover:translate-x-1 transition-all flex items-center gap-2 group"
-                                                    >
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#22c55e] transition-colors"></span>
-                                                        {loc.kommun}
-                                                    </Link>
-                                                );
-                                            } else {
-                                                return (
-                                                    <span
-                                                        key={loc.kommun}
-                                                        className="text-gray-300 flex items-center gap-2 cursor-not-allowed"
-                                                        title="Inga företag registrerade i denna kommun än"
-                                                    >
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-gray-200"></span>
-                                                        {loc.kommun}
-                                                    </span>
-                                                );
-                                            }
+                                            return (
+                                                <Link
+                                                    key={loc.kommun}
+                                                    href={`/malerifirma/${slug}`}
+                                                    className="text-gray-600 hover:text-[#22c55e] hover:translate-x-1 transition-all flex items-center gap-2 group"
+                                                >
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#22c55e] transition-colors"></span>
+                                                    {loc.kommun}
+                                                </Link>
+                                            );
                                         })}
                                     </div>
                                 </div>
