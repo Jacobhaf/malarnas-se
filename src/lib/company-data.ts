@@ -1,4 +1,5 @@
 import { RAW_CSV_DATA } from "@/data/raw-companies-list";
+import { slufigy as slugify } from "@/lib/utils";
 
 export interface Company {
     name: string;
@@ -20,21 +21,7 @@ export interface ExtendedCompany extends Company {
 }
 
 // Reuse the same slugify logic you might have elsewhere, or define it here
-export const slugify = (text: string) => {
-    return text
-        .toString()
-        .toLowerCase()
-        .trim()
-        .replace(/[åä]/g, 'a')
-        .replace(/ö/g, 'o')
-        .replace(/é/g, 'e')
-        .replace(/&/g, '')
-        .replace(/\//g, '')
-        .replace(/[^a-z0-9-]/g, '-') // Replace non-alphanumeric chars with -
-        .replace(/-+/g, '-')         // Replace multiple - with single -
-        .replace(/^-+/, '')          // Trim - from start of text
-        .replace(/-+$/, '');         // Trim - from end of text
-};
+
 
 export const parseRawData = (): ExtendedCompany[] => {
     const lines = RAW_CSV_DATA.split('\n').map(l => l.trim());
