@@ -23,6 +23,7 @@ export default function Footer() {
                             <li><Link href="/#counties" className="hover:text-white transition-colors">Hitta målare</Link></li>
                             <li><Link href="/integritetspolicy" className="hover:text-white transition-colors">Integritetspolicy</Link></li>
                             <li><Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link></li>
+                            <li><Link href="/sitemap" className="hover:text-white transition-colors">Sidkarta</Link></li>
                         </ul>
                     </div>
 
