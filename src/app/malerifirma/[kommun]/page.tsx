@@ -33,7 +33,9 @@ export async function generateMetadata({ params }: { params: { kommun: string } 
 }
 
 export default function MunicipalityPage({ params }: { params: { kommun: string } }) {
-    const companies = getCompaniesByMunicipality(params.kommun);
+    // Decode percent-encoded chars (e.g. %C3%A5 -> å) to match what we expect in logic
+    const decodedKommun = decodeURIComponent(params.kommun);
+    const companies = getCompaniesByMunicipality(decodedKommun);
 
     if (companies.length === 0) {
         // If no companies found in this slug (or slug is invalid), check if we should show a basic empty state or 404.

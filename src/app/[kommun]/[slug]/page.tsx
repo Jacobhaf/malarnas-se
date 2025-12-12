@@ -28,7 +28,9 @@ export async function generateMetadata({ params }: { params: { kommun: string; s
 }
 
 export default function CompanyPage({ params }: { params: { kommun: string; slug: string } }) {
-    const company = getCompanyBySlug(params.kommun, params.slug);
+    const decodedKommun = decodeURIComponent(params.kommun);
+    const decodedSlug = decodeURIComponent(params.slug);
+    const company = getCompanyBySlug(decodedKommun, decodedSlug);
 
     if (!company) {
         notFound();

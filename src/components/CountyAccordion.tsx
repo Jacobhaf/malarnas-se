@@ -8,9 +8,10 @@ import { Location } from '@/lib/types';
 
 interface CountyAccordionProps {
     locations: Location[];
+    activeSlugs?: string[];
 }
 
-export default function CountyAccordion({ locations }: CountyAccordionProps) {
+export default function CountyAccordion({ locations, activeSlugs }: CountyAccordionProps) {
     // Group locations by county
     const counties: Record<string, Location[]> = {};
     locations.forEach(loc => {
@@ -58,16 +59,35 @@ export default function CountyAccordion({ locations }: CountyAccordionProps) {
                             {isOpen && (
                                 <div className="p-6 pt-0 border-t border-gray-100">
                                     <div className="pt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-3 gap-x-6">
-                                        {counties[county].map((loc) => (
-                                            <Link
-                                                key={loc.kommun}
-                                                href={`/malerifirma/${slufigy(loc.kommun)}`}
-                                                className="text-gray-600 hover:text-[#22c55e] hover:translate-x-1 transition-all flex items-center gap-2 group"
-                                            >
-                                                <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#22c55e] transition-colors"></span>
-                                                {loc.kommun}
-                                            </Link>
-                                        ))}
+                                        {counties[county].map((loc) => {
+                                            const slug = slufigy(loc.kommun);
+                                            // Assume active if undefined (backwards compat) or if included in list
+                                            const isActive = activeSlugs ? activeSlugs.includes(slug) : true;
+
+                                            if (isActive) {
+                                                return (
+                                                    <Link
+                                                        key={loc.kommun}
+                                                        href={`/malerifirma/${slug}`}
+                                                        className="text-gray-600 hover:text-[#22c55e] hover:translate-x-1 transition-all flex items-center gap-2 group"
+                                                    >
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#22c55e] transition-colors"></span>
+                                                        {loc.kommun}
+                                                    </Link>
+                                                );
+                                            } else {
+                                                return (
+                                                    <span
+                                                        key={loc.kommun}
+                                                        className="text-gray-300 flex items-center gap-2 cursor-not-allowed"
+                                                        title="Inga företag registrerade i denna kommun än"
+                                                    >
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-gray-200"></span>
+                                                        {loc.kommun}
+                                                    </span>
+                                                );
+                                            }
+                                        })}
                                     </div>
                                 </div>
                             )}

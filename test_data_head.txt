@@ -1,0 +1,200 @@
+
+export const RAW_CSV_DATA = `BOLAGSNAMN
+ORG.NR
+BOLAGSTYP
+ADRESS (POST)
+POSTNR. (POST)
+ORT (POST)
+TELEFON
+FAX
+HEMSIDA
+E-POST
+REGISTRERINGSDATUM
+Östernäs Måleri & Entreprenad Aktiebolag
+556723-9313
+Aktiebolag
+Stationsvägen 55
+184 40
+Åkersberga
+08-540 694 00
+
+
+https://osternasmaleri.se
+
+
+2007-02-16
+Östermalms Måleri AB
+556910-8268
+Aktiebolag
+c/o Hincro AB, Löjtnantsgatan 8
+115 50
+Stockholm
+08-611 94 11
+
+
+https://www.ostermalmsmaleri.se
+
+
+2012-11-19
+Örestads Måleri Aktiebolag
+556286-0972
+Aktiebolag
+Spånehusvägen 77
+214 39
+Malmö
+076-808 15 75
+
+
+https://www.orestadsmaleri.se
+info@orestadsmaleri.se
+1986-10-24
+Örebro Måleri Aktiebolag
+556296-6381
+Aktiebolag
+Bergslagsgatan 6
+703 67
+Örebro
+019-13 59 54
+
+
+https://www.orebromaleri.se
+info@orebromaleri.se
+1987-07-20
+Öfverström Måleri AB
+556940-2281
+Aktiebolag
+Menuettvägen 18
+451 70
+Uddevalla
+070-656 21 94
+
+
+https://ofverstrommaleri.se
+
+
+2013-08-26
+Öckerö Måleri AB
+556703-2932
+Aktiebolag
+Rörtoppsvägen 10
+475 32
+Öckerö
+031-96 96 59
+
+
+
+
+
+
+2006-05-04
+Öbergs Måleri och Fasadrenoveringar i Piteå AB
+556700-2554
+Aktiebolag
+Soldatvägen 141
+944 91
+Hortlax
+0911-633 13
+
+
+
+
+
+
+2006-03-21
+Ö-Z Måleri Aktiebolag
+556407-4341
+Aktiebolag
+Lillängsplan 3 Bv
+131 41
+Nacka
+08-643 21 00
+
+
+
+
+
+
+1990-10-19
+Åviks Måleri AB
+556828-7980
+Aktiebolag
+Mäster Palms Gata 10
+824 44
+Hudiksvall
+0650-994 69
+
+
+https://www.aviksmaleri.com
+info@aviksmaleri.com
+2010-12-01
+Åkes Måleri Aktiebolag
+556121-7729
+Aktiebolag
+Mohed 323
+826 92
+Söderala
+0270-42 50 89
+
+
+https://www.maleri-akerlund.se
+
+
+1968-12-16
+Åke Widén Måleri Express AB
+556516-2830
+Aktiebolag
+c/o Janne Tojander, Aspövägen 70
+141 41
+Huddinge
+070-823 33 66
+
+
+https://maleriexpress.nu
+
+
+1995-09-27
+Åke Höglunds Måleri Aktiebolag
+556409-0461
+Aktiebolag
+Ivarshyttevägen 4
+776 33
+Hedemora
+0223-220 33
+
+
+
+
+
+
+1990-11-30
+Åke Back Målare Aktiebolag
+556541-8166
+Aktiebolag
+Mallslingan 4
+187 66
+Täby
+08-756 82 56
+
+
+
+
+
+
+1997-06-06
+Åhlfeldts Måleri AB
+556961-3564
+Aktiebolag
+Stjärnhovsvägen 2
+125 40
+Älvsjö
+073-511 85 27
+
+
+
+
+
+
+2014-02-06
+Ätrans Måleri AB
+556868-7981
+Aktiebolag
