@@ -31,12 +31,12 @@ const COUNTY_POSITIONS: Record<string, { top: number; left: number }> = {
 
 export default function SwedenMap() {
     return (
-        <div className="relative w-full max-w-[400px] mx-auto">
+        <div className="relative w-full max-w-[600px] mx-auto">
             <Image
                 src="/sweden-map.jpg"
                 alt="Karta över Sveriges län"
-                width={400}
-                height={800}
+                width={600}
+                height={1200}
                 className="w-full h-auto"
                 priority
             />
