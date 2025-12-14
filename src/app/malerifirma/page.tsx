@@ -1,49 +1,40 @@
 
-import { getAllCompanies, getMunicipalityPaths } from "@/lib/company-data";
-import { slufigy } from "@/lib/utils";
+import { getAllCounties } from "@/lib/company-data";
 import Link from "next/link";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Målare per kommun - Alla områden | Målarnas.se',
-    description: 'Hitta en målerifirma nära dig. Vi listar målare i alla Sveriges kommuner och orter.',
+    title: 'Målare per län - Hela Sverige | Målarnas.se',
+    description: 'Hitta en målerifirma i ditt län. Vi listar målare i alla Sveriges län och kommuner.',
     alternates: {
         canonical: '/malerifirma'
     }
 };
 
-export default function MunicipalityIndexPage() {
-    const companies = getAllCompanies();
-    // Get unique municipalities (using the normalized city name from the data to look nice)
-    const municipalitiesMap = new Map<string, string>(); // slug -> Display Name
-
-    companies.forEach(c => {
-        if (!municipalitiesMap.has(c.municipalitySlug)) {
-            municipalitiesMap.set(c.municipalitySlug, c.city);
-        }
-    });
-
-    const sortedMunicipalities = Array.from(municipalitiesMap.keys()).sort((a, b) => {
-        return (municipalitiesMap.get(a) || '').localeCompare(municipalitiesMap.get(b) || '');
-    });
+export default function MalerifirmaIndexPage() {
+    const counties = getAllCounties();
 
     return (
         <div className="container mx-auto px-4 py-12">
             <div className="max-w-4xl mx-auto">
-                <h1 className="text-4xl font-bold text-gray-900 mb-8">Hitta målare i din kommun</h1>
+                <nav className="mb-8 text-sm text-gray-500">
+                    <Link href="/" className="hover:underline">Hem</Link> &gt; <span>Målerifirma</span>
+                </nav>
+
+                <h1 className="text-4xl font-bold text-gray-900 mb-8">Hitta målare i ditt län</h1>
                 <p className="text-xl text-gray-600 mb-12">
-                    Välj din ort nedan för att se lokala måleriföretag, jämföra omdömen och begära offerter för ditt projekt.
+                    Välj ditt län nedan för att se tillgängliga orter och hitta lokala måleriföretag nära dig.
                 </p>
 
                 <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        {sortedMunicipalities.map(slug => (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        {counties.map(county => (
                             <Link
-                                key={slug}
-                                href={`/malerifirma/${slug}`}
-                                className="text-gray-700 hover:text-blue-600 hover:underline py-2 block"
+                                key={county.slug}
+                                href={`/malerifirma/${county.slug}`}
+                                className="block p-4 border rounded-lg hover:border-blue-500 hover:shadow-md transition-all text-gray-800 font-medium bg-gray-50 hover:bg-white"
                             >
-                                {municipalitiesMap.get(slug)}
+                                {county.name}
                             </Link>
                         ))}
                     </div>

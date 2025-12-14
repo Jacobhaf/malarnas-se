@@ -64,7 +64,7 @@ export default function CountyAccordion({ locations, activeSlugs }: CountyAccord
                                             return (
                                                 <Link
                                                     key={loc.kommun}
-                                                    href={`/malerifirma/${slug}`}
+                                                    href={`/malerifirma/${slufigy(county)}/${slug}`}
                                                     className="text-gray-600 hover:text-[#22c55e] hover:translate-x-1 transition-all flex items-center gap-2 group"
                                                 >
                                                     <span className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#22c55e] transition-colors"></span>

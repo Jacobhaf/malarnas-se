@@ -1,4 +1,4 @@
-import { getAllCompanies, getMunicipalityPaths } from '@/lib/company-data';
+import { getAllCompanies, getAllCounties, getMunicipalityParams } from '@/lib/company-data';
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -7,26 +7,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Base routes
     const routes = [
         '',
+        '/malerifirma'
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
     }));
 
-    // Municipality routes
-    const municipalityPaths = getMunicipalityPaths();
-    const municipalities = municipalityPaths.map((slug) => ({
-        url: `${baseUrl}/malerifirma/${slug}`,
+    // County routes
+    const counties = getAllCounties();
+    const countyRoutes = counties.map(c => ({
+        url: `${baseUrl}/malerifirma/${c.slug}`,
+        lastModified: new Date(),
+    }));
+
+    // Municipality routes (Nested)
+    const municipalityParams = getMunicipalityParams();
+    const municipalityRoutes = municipalityParams.map((p) => ({
+        url: `${baseUrl}/malerifirma/${p.lan}/${p.kommun}`,
         lastModified: new Date(),
     }));
 
     // Company routes
-    // For large sites, sitemaps are often split. Here we generate what we can.
-    // If > 50k URLs, this needs splitting.
     const allCompanies = getAllCompanies();
     const companyRoutes = allCompanies.map((c) => ({
         url: `${baseUrl}/${c.municipalitySlug}/${c.companySlug}`,
         lastModified: new Date(),
     }));
 
-    return [...routes, ...municipalities, ...companyRoutes];
+    return [...routes, ...countyRoutes, ...municipalityRoutes, ...companyRoutes];
 }

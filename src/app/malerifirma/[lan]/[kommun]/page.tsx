@@ -4,63 +4,62 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import RotCalculator from "@/components/RotCalculator";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import TrustpilotWidget from "@/components/TrustpilotWidget";
-import { getCompaniesByMunicipality, getMunicipalityPaths } from "@/lib/company-data";
+import { getCompaniesByMunicipality, getMunicipalityParams } from "@/lib/company-data";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-// Generate static params for all municipalities
+// Generate static params for all municipality+county pairs
 export async function generateStaticParams() {
-    const paths = getMunicipalityPaths();
-    return paths.map((kommun) => ({
-        kommun: kommun,
-    }));
+    return getMunicipalityParams();
 }
 
-export async function generateMetadata({ params }: { params: { kommun: string } }): Promise<Metadata> {
-    const companies = getCompaniesByMunicipality(params.kommun);
+export async function generateMetadata({ params }: { params: { lan: string, kommun: string } }): Promise<Metadata> {
+    const decodedKommun = decodeURIComponent(params.kommun);
+    const companies = getCompaniesByMunicipality(decodedKommun).filter(c => c.countySlug === params.lan);
+
     if (companies.length === 0) return { title: 'Sidan hittades inte' };
 
     const cityName = companies[0].city;
+    const countyName = companies[0].county;
 
     return {
         title: `Målerifirma ${cityName} – Jämför målare & få offerter inom 24 timmar | Målarnas`,
-        description: `Hitta kvalitetssäkrade målare och målerifirmor i ${cityName}. Jämför offerter, läs omdömen och se priser för fasadmålning och inomhusmålning i ${cityName}.`,
+        description: `Hitta kvalitetssäkrade målare och målerifirmor i ${cityName}, ${countyName}. Jämför offerter, läs omdömen och se priser för fasadmålning och inomhusmålning i ${cityName}.`,
         alternates: {
-            canonical: `/malerifirma/${params.kommun}`
+            canonical: `/malerifirma/${params.lan}/${params.kommun}`
         }
     };
 }
 
-export default function MunicipalityPage({ params }: { params: { kommun: string } }) {
+export default function MunicipalityPage({ params }: { params: { lan: string, kommun: string } }) {
     // Decode percent-encoded chars (e.g. %C3%A5 -> å) to match what we expect in logic
     const decodedKommun = decodeURIComponent(params.kommun);
-    const companies = getCompaniesByMunicipality(decodedKommun);
+
+    // Filter by both municipality and county to ensure valid URL hierarchy
+    const companies = getCompaniesByMunicipality(decodedKommun).filter(c => c.countySlug === params.lan);
 
     if (companies.length === 0) {
         return (
             <div className="container mx-auto px-4 py-20 text-center">
-                <h1 className="text-3xl font-bold mb-4">Inga målare hittades i denna kommun</h1>
-                <p className="text-gray-600 mb-8">Vi kunde inte hitta några registrerade målerifirmor för "{decodedKommun}".</p>
-                <Link href="/malerifirma" className="text-blue-600 hover:underline">
-                    &larr; Tillbaka till listan
+                <h1 className="text-3xl font-bold mb-4">Inga målare hittades</h1>
+                <p className="text-gray-600 mb-8">Vi kunde inte hitta några registrerade målerifirmor för "{decodedKommun}" i detta län.</p>
+                <Link href={`/malerifirma/${params.lan}`} className="text-blue-600 hover:underline">
+                    &larr; Tillbaka till länet
                 </Link>
-                <div className="mt-12 p-4 bg-gray-100 rounded text-xs text-left font-mono overflow-auto max-h-40">
-                    <p>Debug Info:</p>
-                    <p>Slug received: {params.kommun}</p>
-                    <p>Decoded: {decodedKommun}</p>
-                </div>
             </div>
         );
     }
 
-    const cityName = companies[0].city; // Use the city name from the first company data for display
+    const cityName = companies[0].city;
+    const countyName = companies[0].county;
 
     // Breadcrumb Schema
     const breadcrumbItems = [
         { label: "Hem", url: "/" },
-        { label: "Målare per kommun", url: "/malerifirma" },
-        { label: cityName, url: `/malerifirma/${params.kommun}` }
+        { label: "Målerifirma", url: "/malerifirma" },
+        { label: countyName, url: `/malerifirma/${params.lan}` },
+        { label: cityName, url: `/malerifirma/${params.lan}/${params.kommun}` }
     ];
 
     // FAQ Schema
@@ -89,7 +88,7 @@ export default function MunicipalityPage({ params }: { params: { kommun: string 
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <Breadcrumbs items={breadcrumbItems.slice(1)} /> {/* Breadcrumbs component expects array of {label, url}, skipping 'Hem' visually if component adds it, but let's pass tailored list */}
+            <Breadcrumbs items={breadcrumbItems.slice(1)} />
             <SchemaMarkup schema={faqSchema} />
 
             {/* Breadcrumb Schema Injection */}
@@ -167,7 +166,6 @@ export default function MunicipalityPage({ params }: { params: { kommun: string 
                                     >
                                         Begär offert
                                     </Link>
-                                    {/* Nofollow link to allabolag as requested, if we can construct it, otherwise generic google search or just hide it here and keep on detail page. User asked for it in list view too. */}
                                     <a
                                         href={`https://www.allabolag.se/${company.orgNr.replace(/[^0-9]/g, '')}`}
                                         rel="nofollow noopener"

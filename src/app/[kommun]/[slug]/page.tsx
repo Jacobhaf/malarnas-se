@@ -45,7 +45,7 @@ export default function CompanyPage({ params }: { params: { kommun: string; slug
     const breadcrumbItems = [
         { label: "Hem", url: "/" },
         { label: "Målare per kommun", url: "/malerifirma" },
-        { label: company.city, url: `/malerifirma/${company.municipalitySlug}` },
+        { label: company.city, url: `/malerifirma/${company.countySlug}/${company.municipalitySlug}` },
         { label: company.name, url: `/${company.municipalitySlug}/${company.companySlug}` }
     ];
 
@@ -193,7 +193,7 @@ export default function CompanyPage({ params }: { params: { kommun: string; slug
                         <div>
                             <div className="flex items-center justify-between mb-6">
                                 <h2 className="text-2xl font-bold text-gray-900">Fler målerifirmor i {company.city}</h2>
-                                <Link href={`/malerifirma/${company.municipalitySlug}`} className="text-blue-600 hover:underline text-sm font-medium">
+                                <Link href={`/malerifirma/${company.countySlug}/${company.municipalitySlug}`} className="text-blue-600 hover:underline text-sm font-medium">
                                     Visa alla
                                 </Link>
                             </div>
