@@ -1,7 +1,6 @@
 
 import Link from 'next/link';
-import { getCounties, getMunicipalitiesByCounty } from '@/lib/data';
-import { slufigy } from '@/lib/utils';
+import { getAllCounties, getMunicipalitiesInCounty, getCompaniesByMunicipality } from '@/lib/company-data';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -10,40 +9,59 @@ export const metadata: Metadata = {
 };
 
 export default function SitemapPage() {
-    const counties = getCounties();
+    const counties = getAllCounties();
 
     return (
         <div className="container mx-auto px-4 py-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-8">Sidkarta</h1>
+            <p className="text-gray-600 mb-12">Här hittar du en översikt över alla våra registrerade måleriföretag sorterade efter län och kommun.</p>
 
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
                     {counties.map((county) => {
-                        const municipalities = getMunicipalitiesByCounty(county);
+                        const municipalities = getMunicipalitiesInCounty(county.slug);
+                        if (municipalities.length === 0) return null;
+
                         return (
-                            <li key={county} className="mb-4">
+                            <div key={county.slug} className="mb-4">
                                 <Link
-                                    href={`/malerifirma/${slufigy(county)}`}
-                                    className="text-lg font-bold text-gray-900 hover:text-primary mb-2 block"
+                                    href={`/malerifirma/${county.slug}`}
+                                    className="text-xl font-bold text-gray-900 hover:text-blue-600 mb-4 block border-b pb-2"
                                 >
-                                    {county}
+                                    {county.name}
                                 </Link>
-                                <ul className="pl-4 space-y-1 border-l-2 border-gray-100 ml-1">
-                                    {municipalities.map((m) => (
-                                        <li key={m.kommun}>
-                                            <Link
-                                                href={`/malerifirma/${slufigy(county)}/${slufigy(m.kommun)}`}
-                                                className="text-sm text-gray-600 hover:text-primary transition-colors block py-0.5"
-                                            >
-                                                {m.kommun}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </li>
+                                <div className="space-y-6">
+                                    {municipalities.map((m) => {
+                                        const companies = getCompaniesByMunicipality(m.slug);
+                                        return (
+                                            <div key={m.slug} className="ml-2">
+                                                <Link
+                                                    href={`/malerifirma/${county.slug}/${m.slug}`}
+                                                    className="text-base font-semibold text-gray-800 hover:text-blue-600 block mb-2"
+                                                >
+                                                    {m.name}
+                                                </Link>
+                                                <ul className="pl-4 space-y-1 border-l-2 border-gray-100 ml-1">
+                                                    {companies.map((c) => (
+                                                        <li key={c.orgNr}>
+                                                            <Link
+                                                                href={`/${c.municipalitySlug}/${c.companySlug}`}
+                                                                className="text-sm text-gray-500 hover:text-blue-600 transition-colors block py-0.5 truncate max-w-[250px]"
+                                                                title={c.name}
+                                                            >
+                                                                {c.name}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
                         );
                     })}
-                </ul>
+                </div>
             </div>
         </div>
     );
