@@ -1,5 +1,6 @@
 
 import { getAllCounties } from "@/lib/company-data";
+import SwedenMap from "@/components/SwedenMap";
 import Link from "next/link";
 import { Metadata } from 'next';
 
@@ -22,21 +23,30 @@ export default function MalerifirmaIndexPage() {
                 </nav>
 
                 <h1 className="text-4xl font-bold text-gray-900 mb-8">Hitta målare i ditt län</h1>
-                <p className="text-xl text-gray-600 mb-12">
-                    Välj ditt län nedan för att se tillgängliga orter och hitta lokala måleriföretag nära dig.
-                </p>
 
-                <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                        {counties.map(county => (
-                            <Link
-                                key={county.slug}
-                                href={`/malerifirma/${county.slug}`}
-                                className="block p-4 border rounded-lg hover:border-blue-500 hover:shadow-md transition-all text-gray-800 font-medium bg-gray-50 hover:bg-white"
-                            >
-                                {county.name}
-                            </Link>
-                        ))}
+                <div className="flex flex-col lg:flex-row gap-12 items-start mb-12">
+                    <div className="w-full lg:w-1/2">
+                        <p className="text-xl text-gray-600 mb-8">
+                            Klicka på kartan eller välj ditt län i listan nedan för att se tillgängliga orter och hitta lokala måleriföretag nära dig.
+                        </p>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            {counties.map(county => (
+                                <li key={county.slug}>
+                                    <Link
+                                        href={`/malerifirma/${county.slug}`}
+                                        className="flex items-center justify-between p-3 border rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors bg-white text-gray-800"
+                                    >
+                                        <span>{county.name}</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-gray-400">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                        </svg>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="w-full lg:w-1/2 flex justify-center bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                        <SwedenMap />
                     </div>
                 </div>
             </div>
