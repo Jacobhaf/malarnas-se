@@ -2,9 +2,9 @@
 import Link from 'next/link';
 import { Breadcrumb } from '@/lib/types';
 
-export default function Breadcrumbs({ items }: { items: Breadcrumb[] }) {
+export default function Breadcrumbs({ items, className = "" }: { items: Breadcrumb[], className?: string }) {
     return (
-        <nav className="flex text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+        <nav className={`flex text-sm text-gray-500 mb-6 ${className}`} aria-label="Breadcrumb">
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
                 <li className="inline-flex items-center">
                     <Link href="/" className="inline-flex items-center hover:text-primary transition-colors">
