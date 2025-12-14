@@ -43,14 +43,16 @@ export default function SitemapPage() {
                                                 </Link>
                                                 <ul className="pl-4 space-y-1 border-l-2 border-gray-100 ml-1">
                                                     {companies.map((c) => (
-                                                        <li key={c.orgNr}>
+                                                        <li key={c.orgNr} className="mb-2">
                                                             <Link
                                                                 href={`/${c.municipalitySlug}/${c.companySlug}`}
-                                                                className="text-sm text-gray-500 hover:text-blue-600 transition-colors block py-0.5 truncate max-w-[250px]"
-                                                                title={c.name}
+                                                                className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors block"
                                                             >
                                                                 {c.name}
                                                             </Link>
+                                                            <span className="text-xs text-gray-400 font-mono block break-all">
+                                                                /{c.municipalitySlug}/{c.companySlug}
+                                                            </span>
                                                         </li>
                                                     ))}
                                                 </ul>
