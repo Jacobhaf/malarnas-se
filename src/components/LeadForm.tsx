@@ -14,7 +14,7 @@ export default function LeadForm() {
 
             <button
                 onClick={openModal}
-                className="w-full bg-[#d93025] hover:bg-[#b0221a] text-white font-bold py-3.5 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
             >
                 Begär offert gratis
             </button>

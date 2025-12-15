@@ -113,7 +113,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                                         </p>
                                         <button
                                             onClick={onClose}
-                                            className="bg-[#d93025] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#b0221a] transition-colors"
+                                            className="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors"
                                         >
                                             Stäng fönstret
                                         </button>
@@ -188,11 +188,11 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                                                             type="button"
                                                             onClick={() => handleServiceSelect(service.id)}
                                                             className={`flex items-center gap-3 p-4 rounded-xl border text-left transition-all ${isSelected
-                                                                    ? "border-[#d93025] bg-red-50 text-[#d93025] ring-1 ring-[#d93025]"
+                                                                    ? "border-blue-600 bg-blue-50 text-blue-600 ring-1 ring-blue-600"
                                                                     : "border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700"
                                                                 }`}
                                                         >
-                                                            <Icon size={20} strokeWidth={1.5} className={isSelected ? "text-[#d93025]" : "text-gray-500"} />
+                                                            <Icon size={20} strokeWidth={1.5} className={isSelected ? "text-blue-600" : "text-gray-500"} />
                                                             <span className="font-medium text-sm">{service.label}</span>
                                                         </button>
                                                     );
@@ -204,14 +204,14 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                                         <div className="space-y-4 mb-8">
                                             <div>
                                                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                                                    Fullständigt namn <span className="text-[#d93025]">*</span>
+                                                    Fullständigt namn <span className="text-blue-600">*</span>
                                                 </label>
                                                 <div className="relative">
                                                     <input
                                                         type="text"
                                                         name="name"
                                                         required
-                                                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#d93025] focus:border-[#d93025] outline-none transition-all bg-gray-50/50"
+                                                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all bg-gray-50/50"
                                                         placeholder=""
                                                         value={formData.name}
                                                         onChange={handleInputChange}
@@ -228,7 +228,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                                                     <input
                                                         type="text"
                                                         name="address"
-                                                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#d93025] focus:border-[#d93025] outline-none transition-all bg-gray-50/50"
+                                                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all bg-gray-50/50"
                                                         value={formData.address}
                                                         onChange={handleInputChange}
                                                     />
@@ -239,26 +239,26 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                                             <div className="grid grid-cols-2 gap-4">
                                                 <div>
                                                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                                                        Postnummer <span className="text-[#d93025]">*</span>
+                                                        Postnummer <span className="text-blue-600">*</span>
                                                     </label>
                                                     <input
                                                         type="text"
                                                         name="zip"
                                                         required
-                                                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#d93025] focus:border-[#d93025] outline-none transition-all bg-gray-50/50"
+                                                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all bg-gray-50/50"
                                                         value={formData.zip}
                                                         onChange={handleInputChange}
                                                     />
                                                 </div>
                                                 <div>
                                                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                                                        Ort <span className="text-[#d93025]">*</span>
+                                                        Ort <span className="text-blue-600">*</span>
                                                     </label>
                                                     <input
                                                         type="text"
                                                         name="city"
                                                         required
-                                                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#d93025] focus:border-[#d93025] outline-none transition-all bg-gray-50/50"
+                                                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all bg-gray-50/50"
                                                         value={formData.city}
                                                         onChange={handleInputChange}
                                                     />
@@ -268,14 +268,14 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                                             <div className="grid md:grid-cols-2 gap-4">
                                                 <div>
                                                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                                                        Telefonnummer <span className="text-[#d93025]">*</span>
+                                                        Telefonnummer <span className="text-blue-600">*</span>
                                                     </label>
                                                     <div className="relative">
                                                         <input
                                                             type="tel"
                                                             name="phone"
                                                             required
-                                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#d93025] focus:border-[#d93025] outline-none transition-all bg-gray-50/50"
+                                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all bg-gray-50/50"
                                                             value={formData.phone}
                                                             onChange={handleInputChange}
                                                         />
@@ -284,14 +284,14 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                                                 </div>
                                                 <div>
                                                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                                                        E-postadress <span className="text-[#d93025]">*</span>
+                                                        E-postadress <span className="text-blue-600">*</span>
                                                     </label>
                                                     <div className="relative">
                                                         <input
                                                             type="email"
                                                             name="email"
                                                             required
-                                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#d93025] focus:border-[#d93025] outline-none transition-all bg-gray-50/50"
+                                                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all bg-gray-50/50"
                                                             value={formData.email}
                                                             onChange={handleInputChange}
                                                         />
@@ -303,7 +303,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
 
                                         <button
                                             type="submit"
-                                            className="w-full bg-[#d93025] hover:bg-[#b0221a] text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+                                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
                                         >
                                             Skicka in
                                         </button>
