@@ -151,6 +151,29 @@ const getLocationMap = () => {
     return locationMap!;
 };
 
+// New function to get all municipalities from raw data (for static paths and SEO)
+export const getAllMunicipalitiesFromRaw = (): { name: string, slug: string, county: string, countySlug: string, population: string }[] => {
+    const lines = RAW_LOCATIONS.split('\n');
+    const municipalities: { name: string, slug: string, county: string, countySlug: string, population: string }[] = [];
+
+    lines.forEach(line => {
+        const parts = line.split('\t');
+        if (parts.length >= 3) {
+            const name = parts[0].trim();
+            const population = parts[1].trim();
+            const county = parts[2].trim();
+            municipalities.push({
+                name,
+                slug: slugify(name),
+                county,
+                countySlug: slugify(county),
+                population
+            });
+        }
+    });
+    return municipalities;
+};
+
 
 export const parseRawData = (): ExtendedCompany[] => {
     const lines = ALL_COMPANIES_RAW.split('\n').filter(l => l.trim().length > 0);
@@ -253,31 +276,25 @@ export const getAllCounties = () => {
             counties.set(c.countySlug, c.county);
         }
     });
+    // Ensure all counties from RAW_LOCATIONS are also included even if no companies? 
+    // Usually companies cover all counties, but let's be safe if needed. 
+    // For now base on companies as per original, but maybe merge?
+    // Actually, let's merge with RAW_LOCATIONS counties to be safe.
+    const rawCounties = getAllMunicipalitiesFromRaw().map(m => ({ slug: m.countySlug, name: m.county }));
+    rawCounties.forEach(rc => counties.set(rc.slug, rc.name));
+
     return Array.from(counties.entries()).map(([slug, name]) => ({ slug, name })).sort((a, b) => a.name.localeCompare(b.name));
 };
 
 export const getMunicipalitiesInCounty = (countySlug: string) => {
-    const companies = getAllCompanies();
-    const munis = new Map<string, string>(); // slug -> name
-
-    companies
-        .filter(c => c.countySlug === countySlug)
-        .forEach(c => {
-            munis.set(c.municipalitySlug, c.city);
-        });
-
-    return Array.from(munis.entries()).map(([slug, name]) => ({ slug, name })).sort((a, b) => a.name.localeCompare(b.name));
+    // Return all valid municipalities for the county, not just those with companies
+    return getAllMunicipalitiesFromRaw()
+        .filter(m => m.countySlug === countySlug)
+        .sort((a, b) => a.name.localeCompare(b.name));
 };
 
 export const getMunicipalityPaths = () => {
-    const companies = getAllCompanies();
-    // We need to return an array of params objects or similar, but the original function returned strings. 
-    // Let's keep it returning strings of municipalitySlugs for compatibility, 
-    // OR update it to return extended paths if used in generateStaticParams.
-    // The previous usage was: return paths.map((kommun) => ({ kommun: kommun }));
-    // We might need to update that call site.
-    const paths = new Set(companies.map(c => c.municipalitySlug));
-    return Array.from(paths);
+    return getAllMunicipalitiesFromRaw().map(m => m.slug);
 };
 
 export const getCountyPaths = () => {
@@ -286,6 +303,13 @@ export const getCountyPaths = () => {
 
 // Special helper to find county for a municipality slug (needed for breadcrumbs/routing)
 export const getCountyForMunicipality = (municipalitySlug: string): { name: string, slug: string } | undefined => {
+    // Check raw data first for comprehensive list
+    const muni = getAllMunicipalitiesFromRaw().find(m => m.slug === municipalitySlug);
+    if (muni) {
+        return { name: muni.county, slug: muni.countySlug };
+    }
+
+    // Fallback to companies just in case
     const companies = getAllCompanies();
     const company = companies.find(c => c.municipalitySlug === municipalitySlug);
     if (company) {
@@ -295,17 +319,9 @@ export const getCountyForMunicipality = (municipalitySlug: string): { name: stri
 }
 
 export const getMunicipalityParams = () => {
-    const companies = getAllCompanies();
-    const params = new Set<string>(); // Use set of strings "lan|kommun" to dedupe
-
-    companies.forEach(c => {
-        if (c.countySlug && c.municipalitySlug) {
-            params.add(`${c.countySlug}|${c.municipalitySlug}`);
-        }
-    });
-
-    return Array.from(params).map(p => {
-        const [lan, kommun] = p.split('|');
-        return { lan, kommun };
-    });
+    // Return all municipalities from RAW_LOCATIONS
+    return getAllMunicipalitiesFromRaw().map(m => ({
+        lan: m.countySlug,
+        kommun: m.slug
+    }));
 };

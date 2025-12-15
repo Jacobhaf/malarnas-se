@@ -8,28 +8,26 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-// Only generate params for a subset or rely on dynamic rendering to avoid build timeout with 2000+ pages
-// Ideally we generate all, but for this environment, let's allow dynamic.
-// Actually, user asked for "Statisk generering om möjligt".
-// Let's rely on default dynamic behavior for the company leaf pages to be safe, or generate top 100.
-// For now, no generateStaticParams here to ensure build speed, Next.js handles it fine.
+// Dynamic routing is fine for now
 
-export async function generateMetadata({ params }: { params: { kommun: string; slug: string } }): Promise<Metadata> {
-    const company = getCompanyBySlug(params.kommun, params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ lan: string; kommun: string; slug: string }> }): Promise<Metadata> {
+    const { lan, kommun, slug } = await params;
+    const company = getCompanyBySlug(kommun, slug);
     if (!company) return { title: 'Företaget hittades inte' };
 
     return {
         title: `${company.name} – Målerifirma i ${company.city} | Målarnas`,
         description: `Kontakta ${company.name} i ${company.city} för målning, tapetsering och renovering. Se kontaktuppgifter, omdömen och begär offert direkt.`,
         alternates: {
-            canonical: `/${params.kommun}/${params.slug}`
+            canonical: `/malerifirma/${lan}/${kommun}/${slug}`
         }
     };
 }
 
-export default function CompanyPage({ params }: { params: { kommun: string; slug: string } }) {
-    const decodedKommun = decodeURIComponent(params.kommun);
-    const decodedSlug = decodeURIComponent(params.slug);
+export default async function CompanyPage({ params }: { params: Promise<{ lan: string; kommun: string; slug: string }> }) {
+    const { lan, kommun, slug } = await params;
+    const decodedKommun = decodeURIComponent(kommun);
+    const decodedSlug = decodeURIComponent(slug);
     const company = getCompanyBySlug(decodedKommun, decodedSlug);
 
     if (!company) {
@@ -37,24 +35,25 @@ export default function CompanyPage({ params }: { params: { kommun: string; slug
     }
 
     // Get other companies in same municipality for "More companies" section
-    const otherCompanies = getCompaniesByMunicipality(params.kommun)
+    const otherCompanies = getCompaniesByMunicipality(kommun)
         .filter(c => c.orgNr !== company.orgNr)
-        .slice(0, 6); // Take 6 random ones (simple slice for now)
+        .slice(0, 6); // Take 6 random ones
 
     // Breadcrumb Schema
     const breadcrumbItems = [
         { label: "Hem", url: "/" },
-        { label: "Målare per kommun", url: "/malerifirma" },
+        { label: "Målerifirma", url: "/malerifirma" },
+        { label: company.county, url: `/malerifirma/${company.countySlug}` },
         { label: company.city, url: `/malerifirma/${company.countySlug}/${company.municipalitySlug}` },
-        { label: company.name, url: `/${company.municipalitySlug}/${company.companySlug}` }
+        { label: company.name, url: `/malerifirma/${company.countySlug}/${company.municipalitySlug}/${company.companySlug}` }
     ];
 
     // LocalBusiness Schema
     const businessSchema = {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness", // or ProfessionalService
+        "@type": "LocalBusiness",
         "name": company.name,
-        "image": "https://malarnas.se/logo.svg", // Fallback image
+        "image": "https://malarnas.se/logo.svg",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": company.address,
@@ -62,7 +61,7 @@ export default function CompanyPage({ params }: { params: { kommun: string; slug
             "postalCode": company.zip,
             "addressCountry": "SE"
         },
-        "url": `https://malarnas.se/${company.municipalitySlug}/${company.companySlug}`,
+        "url": `https://malarnas.se/malerifirma/${company.countySlug}/${company.municipalitySlug}/${company.companySlug}`,
         "telephone": company.phone,
         "email": company.email,
         "areaServed": company.city
@@ -201,7 +200,7 @@ export default function CompanyPage({ params }: { params: { kommun: string; slug
                                 {otherCompanies.map(c => (
                                     <Link
                                         key={c.orgNr}
-                                        href={`/${c.municipalitySlug}/${c.companySlug}`}
+                                        href={`/malerifirma/${c.countySlug}/${c.municipalitySlug}/${c.companySlug}`}
                                         className="block bg-white hover:bg-gray-50 p-4 rounded-xl border border-gray-100 transition-colors"
                                     >
                                         <div className="font-bold text-gray-900">{c.name}</div>

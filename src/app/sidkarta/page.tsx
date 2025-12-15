@@ -45,13 +45,13 @@ export default function SitemapPage() {
                                                     {companies.map((c) => (
                                                         <li key={c.orgNr} className="mb-2">
                                                             <Link
-                                                                href={`/${c.municipalitySlug}/${c.companySlug}`}
+                                                                href={`/malerifirma/${county.slug}/${c.municipalitySlug}/${c.companySlug}`}
                                                                 className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors block"
                                                             >
                                                                 {c.name}
                                                             </Link>
                                                             <span className="text-xs text-gray-400 font-mono block break-all">
-                                                                /{c.municipalitySlug}/{c.companySlug}
+                                                                /malerifirma/{county.slug}/{c.municipalitySlug}/{c.companySlug}
                                                             </span>
                                                         </li>
                                                     ))}

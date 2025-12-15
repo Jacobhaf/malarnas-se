@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Company routes
     const allCompanies = getAllCompanies();
     const companyRoutes = allCompanies.map((c) => ({
-        url: `${baseUrl}/${c.municipalitySlug}/${c.companySlug}`,
+        url: `${baseUrl}/malerifirma/${c.countySlug}/${c.municipalitySlug}/${c.companySlug}`,
         lastModified: new Date(),
     }));
 
