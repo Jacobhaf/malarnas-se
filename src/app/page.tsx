@@ -21,10 +21,11 @@ export default function Home() {
             muted
             loop
             playsInline
+            preload="auto"
             className="w-full h-full object-cover"
             poster="/images/hero-poster.jpg"
           >
-            <source src="/videos/hero-background.mp4" type="video/mp4" />
+            <source src="/videos/hero-background.mp4?v=2" type="video/mp4" />
           </video>
         </div>
 

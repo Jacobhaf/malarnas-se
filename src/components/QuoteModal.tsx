@@ -40,7 +40,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
 
     const services = [
         { id: "inomhus", label: "Inomhusmålning", icon: PaintRoller },
-        { id: "utomhus", label: "Utomhusmålning", icon: Paintbrush },
+        { id: "takmalning", label: "Takmålning", icon: Paintbrush },
         { id: "tapetsering", label: "Tapetsering", icon: Scroll },
         { id: "fasad", label: "Fasadmålning", icon: Home },
         { id: "lackering", label: "Lackering av kök/möbler", icon: Layers },
