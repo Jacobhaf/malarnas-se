@@ -199,12 +199,12 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Inomhusmålning", img: "/images/lan/interior-living-room.png", desc: "Väggar, tak och golv." },
-              { title: "Fasadmålning", img: "/images/lan/exterior-red-house.jpg", desc: "Skydda huset & ge det nytt liv." },
-              { title: "Tapetsering", img: "/images/lan/interior-green-room.png", desc: "Mönsterpassning & väv." },
-              { title: "Snickerimålning", img: "/images/lan/interior-living-room.png", desc: "Kök, dörrar och fönster." }
+              { title: "Inomhusmålning", img: "/images/artiklar/inomhus.png", desc: "Väggar, tak och golv.", link: "/artiklar/inomhusmalning" },
+              { title: "Fasadmålning", img: "/images/artiklar/fasad.png", desc: "Skydda huset & ge det nytt liv.", link: "/artiklar/fasadmalning" },
+              { title: "Tapetsering", img: "/images/artiklar/tapetsering.png", desc: "Mönsterpassning & väv.", link: "/artiklar/tapetsering" },
+              { title: "Snickerimålning", img: "/images/artiklar/snickerimalning.png", desc: "Kök, dörrar och fönster.", link: "/artiklar/snickerimalning" }
             ].map((service, idx) => (
-              <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all h-80">
+              <Link key={idx} href={service.link} className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all h-80 block">
                 <Image
                   src={service.img}
                   alt={service.title}
@@ -218,7 +218,7 @@ export default function Home() {
                     {service.desc}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
