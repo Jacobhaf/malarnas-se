@@ -37,7 +37,7 @@ export default function Header() {
                         onClick={openModal}
                         className="hidden sm:block bg-gray-900 hover:bg-gray-800 text-white font-bold py-2.5 px-6 rounded-full text-sm transition-colors"
                     >
-                        Hitta målare
+                        Få offert
                     </button>
                 </div>
             </div >
