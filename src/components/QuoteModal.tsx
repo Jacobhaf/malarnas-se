@@ -34,7 +34,8 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
         zip: "",
         city: "",
         phone: "",
-        email: ""
+        email: "",
+        message: ""
     });
 
     const services = [
@@ -188,8 +189,8 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                                                             type="button"
                                                             onClick={() => handleServiceSelect(service.id)}
                                                             className={`flex items-center gap-3 p-4 rounded-xl border text-left transition-all ${isSelected
-                                                                    ? "border-blue-600 bg-blue-50 text-blue-600 ring-1 ring-blue-600"
-                                                                    : "border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700"
+                                                                ? "border-blue-600 bg-blue-50 text-blue-600 ring-1 ring-blue-600"
+                                                                : "border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700"
                                                                 }`}
                                                         >
                                                             <Icon size={20} strokeWidth={1.5} className={isSelected ? "text-blue-600" : "text-gray-500"} />
@@ -298,6 +299,19 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                                                         <Mail className="absolute left-3.5 top-3.5 text-gray-400" size={18} />
                                                     </div>
                                                 </div>
+                                            </div>
+
+                                            <div>
+                                                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                                                    Övrig information (frivilligt)
+                                                </label>
+                                                <textarea
+                                                    name="message"
+                                                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all bg-gray-50/50 h-24 resize-none"
+                                                    placeholder="Beskriv ditt projekt mer detaljerat..."
+                                                    value={formData.message}
+                                                    onChange={(e: any) => handleInputChange(e)}
+                                                ></textarea>
                                             </div>
                                         </div>
 

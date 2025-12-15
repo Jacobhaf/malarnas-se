@@ -201,6 +201,40 @@ export default async function MunicipalityPage({ params }: { params: Promise<{ l
                             </ul>
                         </section>
 
+                        {/* Images - Facade */}
+                        <section className="grid md:grid-cols-3 gap-4 mb-12">
+                            <figure className="md:col-span-1">
+                                <Image
+                                    src="/images/lan/exterior-red-house.jpg"
+                                    alt={`Fasadmålning av trähus i ${cityName}`}
+                                    width={400}
+                                    height={500}
+                                    className="rounded-xl shadow-md w-full h-48 md:h-64 object-cover hover:scale-[1.02] transition-transform duration-300"
+                                />
+                                <figcaption className="text-xs text-gray-500 mt-2 text-center">Fasadrenovering i {cityName}</figcaption>
+                            </figure>
+                            <figure className="md:col-span-1">
+                                <Image
+                                    src="/images/lan/roof-maintenance.jpg"
+                                    alt={`Takmålning och underhåll i ${cityName}`}
+                                    width={400}
+                                    height={500}
+                                    className="rounded-xl shadow-md w-full h-48 md:h-64 object-cover hover:scale-[1.02] transition-transform duration-300"
+                                />
+                                <figcaption className="text-xs text-gray-500 mt-2 text-center">Takunderhåll i {cityName}</figcaption>
+                            </figure>
+                            <figure className="md:col-span-1">
+                                <Image
+                                    src="/images/lan/exterior-green-house.jpg"
+                                    alt={`Målade fönster och fasad i ${cityName}`}
+                                    width={400}
+                                    height={500}
+                                    className="rounded-xl shadow-md w-full h-48 md:h-64 object-cover hover:scale-[1.02] transition-transform duration-300"
+                                />
+                                <figcaption className="text-xs text-gray-500 mt-2 text-center">Detaljmålning i {cityName}</figcaption>
+                            </figure>
+                        </section>
+
                         <div className="mb-12">
                             <h2 className="text-2xl font-bold text-gray-900 mb-6">Populära tjänster i {cityName}</h2>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

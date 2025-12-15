@@ -213,7 +213,7 @@ export default async function CountyPage({ params }: Props) {
                                     height={500}
                                     className="rounded-xl shadow-md w-full h-48 md:h-64 object-cover hover:scale-[1.02] transition-transform duration-300"
                                 />
-                                <figcaption className="text-xs text-gray-500 mt-2 text-center">Fasadrenovering</figcaption>
+                                <figcaption className="text-xs text-gray-500 mt-2 text-center">Fasadrenovering i {county.name}</figcaption>
                             </figure>
                             <figure className="md:col-span-1">
                                 <Image
@@ -223,7 +223,7 @@ export default async function CountyPage({ params }: Props) {
                                     height={500}
                                     className="rounded-xl shadow-md w-full h-48 md:h-64 object-cover hover:scale-[1.02] transition-transform duration-300"
                                 />
-                                <figcaption className="text-xs text-gray-500 mt-2 text-center">Takunderhåll</figcaption>
+                                <figcaption className="text-xs text-gray-500 mt-2 text-center">Takunderhåll i {county.name}</figcaption>
                             </figure>
                             <figure className="md:col-span-1">
                                 <Image
@@ -233,7 +233,7 @@ export default async function CountyPage({ params }: Props) {
                                     height={500}
                                     className="rounded-xl shadow-md w-full h-48 md:h-64 object-cover hover:scale-[1.02] transition-transform duration-300"
                                 />
-                                <figcaption className="text-xs text-gray-500 mt-2 text-center">Detaljmålning</figcaption>
+                                <figcaption className="text-xs text-gray-500 mt-2 text-center">Detaljmålning i {county.name}</figcaption>
                             </figure>
                         </section>
 
