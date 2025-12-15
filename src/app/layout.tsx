@@ -12,6 +12,10 @@ export const metadata = {
   description: "Hitta certifierade och lokala målare. Få offerter inom 24 timmar.",
 };
 
+import { QuoteModalProvider } from "@/components/providers/QuoteModalProvider";
+
+// ... existing imports
+
 export default function RootLayout({
   children,
 }: {
@@ -20,11 +24,13 @@ export default function RootLayout({
   return (
     <html lang="sv" className="scroll-smooth">
       <body className={`${inter.variable} font-sans antialiased text-gray-900 bg-white flex flex-col min-h-screen`}>
-        <Header />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+        <QuoteModalProvider>
+          <Header />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </QuoteModalProvider>
       </body>
     </html>
   );

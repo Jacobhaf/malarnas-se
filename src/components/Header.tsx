@@ -1,7 +1,11 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useQuoteModal } from './providers/QuoteModalProvider';
 
 export default function Header() {
+    const { openModal } = useQuoteModal();
 
     return (
         <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
@@ -29,12 +33,12 @@ export default function Header() {
                 </nav>
 
                 <div className="flex items-center gap-4">
-                    <Link
-                        href="/#counties"
+                    <button
+                        onClick={openModal}
                         className="hidden sm:block bg-gray-900 hover:bg-gray-800 text-white font-bold py-2.5 px-6 rounded-full text-sm transition-colors"
                     >
                         Hitta målare
-                    </Link>
+                    </button>
                 </div>
             </div >
         </header >

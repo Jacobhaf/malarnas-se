@@ -10,6 +10,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from 'next/image';
+import RequestQuoteButton from "@/components/RequestQuoteButton";
 
 // Generate static params for all municipality+county pairs
 export async function generateStaticParams() {
@@ -252,12 +253,10 @@ export default async function MunicipalityPage({ params }: { params: Promise<{ l
                                             </div>
                                         </div>
                                         <div className="flex flex-col gap-2 w-full md:w-auto">
-                                            <Link
-                                                href={`/malerifirma/${company.countySlug}/${company.municipalitySlug}/${company.companySlug}`}
-                                                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg text-center transition-colors text-sm"
-                                            >
-                                                Begär offert
-                                            </Link>
+                                            <RequestQuoteButton
+                                                className="py-2 px-6 font-medium text-sm w-full md:w-auto"
+                                                text="Begär offert"
+                                            />
                                             <a
                                                 href={`https://www.allabolag.se/${company.orgNr.replace(/[^0-9]/g, '')}`}
                                                 rel="nofollow noopener"

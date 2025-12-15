@@ -7,6 +7,7 @@ import { getCompaniesByMunicipality, getCompanyBySlug } from "@/lib/company-data
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import RequestQuoteButton from "@/components/RequestQuoteButton";
 
 // Dynamic routing is fine for now
 
@@ -146,9 +147,10 @@ export default async function CompanyPage({ params }: { params: Promise<{ lan: s
                         </div>
 
                         <div className="mt-8 pt-8 border-t border-gray-100">
-                            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
-                                Få offert från {company.name}
-                            </button>
+                            <RequestQuoteButton
+                                className="w-full py-4 text-white font-bold shadow-md hover:shadow-lg"
+                                text={`Få offert från ${company.name}`}
+                            />
                             <p className="text-center text-sm text-gray-500 mt-2">Gratis och ej bindande</p>
                         </div>
                     </div>
