@@ -10,14 +10,30 @@ export interface JobAd {
         municipality: string;
         region: string;
         city?: string;
+        street_address?: string;
+        postcode?: string;
     };
     employer: {
         name: string;
+        url?: string;
+        organization_number?: string;
     };
     application_deadline?: string;
     webpage_url: string;
     logo_url?: string;
     publication_date: string;
+    occupation?: {
+        label: string;
+    };
+    employment_type?: {
+        label: string;
+    };
+    duration?: {
+        label: string;
+    };
+    salary_type?: {
+        label: string;
+    };
 }
 
 export interface JobSearchResponse {
@@ -27,18 +43,18 @@ export interface JobSearchResponse {
     hits: JobAd[];
 }
 
+const BASE_URL = "https://jobsearch.api.jobtechdev.se";
+
 export async function searchJobs(location?: string, limit: number = 10): Promise<JobAd[]> {
     try {
         const query = location ? `målare ${location}` : "målare";
-        // Using JobTech Dev API
         const response = await fetch(
-            `https://jobsearch.api.jobtechdev.se/search?q=${encodeURIComponent(query)}&limit=${limit}&sort=pubdate-desc`,
+            `${BASE_URL}/search?q=${encodeURIComponent(query)}&limit=${limit}&sort=pubdate-desc`,
             {
                 headers: {
                     'accept': 'application/json',
-                    // 'x-feature-freetext-bool-method': 'and' // Optional for stricter search
                 },
-                next: { revalidate: 3600 } // Cache for 1 hour
+                next: { revalidate: 3600 }
             }
         );
 
@@ -52,5 +68,26 @@ export async function searchJobs(location?: string, limit: number = 10): Promise
     } catch (error) {
         console.error("Failed to fetch jobs:", error);
         return [];
+    }
+}
+
+export async function getJobAd(id: string): Promise<JobAd | null> {
+    try {
+        const response = await fetch(`${BASE_URL}/ad/${id}`, {
+            headers: { 'accept': 'application/json' },
+            next: { revalidate: 3600 }
+        });
+
+        if (!response.ok) {
+            if (response.status === 404) return null; // Job gone
+            console.error("Job API error:", response.status);
+            return null;
+        }
+
+        const data: JobAd = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Failed to fetch job ad:", error);
+        return null;
     }
 }
