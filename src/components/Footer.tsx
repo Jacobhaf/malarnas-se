@@ -35,7 +35,7 @@ export default function Footer() {
                     <div>
                         <h4 className="text-white font-bold mb-4">Kontakt</h4>
                         <p className="mb-2">Har du frågor? Kontakta oss:</p>
-                        <a href="mailto:info@malarnas.se" className="text-blue-400 hover:text-blue-300 transition-colors">info@malarnas.se</a>
+                        <a href="mailto:info@malarnas.se" rel="nofollow" className="text-blue-400 hover:text-blue-300 transition-colors">info@malarnas.se</a>
                     </div>
                 </div>
 
