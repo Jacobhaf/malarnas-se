@@ -29,6 +29,10 @@ export default function Header() {
                         MÅLARE PER KOMMUN
                     </Link>
 
+                    <Link href="/heta-jobb" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                        HETA JOBB
+                    </Link>
+
                     <Link href="/#counties" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">OM OSS</Link>
                 </nav>
 

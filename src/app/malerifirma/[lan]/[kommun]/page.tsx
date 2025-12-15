@@ -14,6 +14,8 @@ import RequestQuoteButton from "@/components/RequestQuoteButton";
 
 import FaqSection from "@/components/FaqSection";
 import { getFaqData } from "@/lib/faq-data";
+import JobList from "@/components/JobList";
+import { searchJobs } from "@/lib/job-api";
 
 // Generate static params for all municipality+county pairs
 export async function generateStaticParams() {
@@ -261,6 +263,13 @@ export default async function MunicipalityPage({ params }: { params: Promise<{ l
                                 </p>
                             </div>
                         )}
+
+                        <JobList
+                            jobs={await searchJobs(cityName, 5)}
+                            title={`Lediga målarjobb i ${cityName}`}
+                            locationName={cityName}
+                            showEmptyMessage={false}
+                        />
 
                         <FaqSection items={faqItems} areaName={cityName} />
 

@@ -9,6 +9,8 @@ import LeadForm from "@/components/LeadForm";
 import TrustpilotWidget from "@/components/TrustpilotWidget";
 import FaqSection from "@/components/FaqSection";
 import { getFaqData } from "@/lib/faq-data";
+import JobList from "@/components/JobList";
+import { searchJobs } from "@/lib/job-api";
 
 interface Props {
     params: Promise<{ lan: string }>;
@@ -234,6 +236,13 @@ export default async function CountyPage({ params }: Props) {
                                 <figcaption className="text-xs text-gray-500 mt-2 text-center">Detaljmålning</figcaption>
                             </figure>
                         </section>
+
+                        <JobList
+                            jobs={await searchJobs(county.name, 5)}
+                            title={`Lediga målarjobb i ${county.name}`}
+                            locationName={county.name}
+                            showEmptyMessage={false}
+                        />
 
                         <FaqSection items={getFaqData(county.name)} areaName={county.name} />
 
