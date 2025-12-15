@@ -24,7 +24,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
             <Link
-              href="#counties"
+              href="/malerifirma"
               className="bg-[#22c55e] hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-transform hover:scale-105 shadow-lg"
             >
               Hitta målare nära dig
