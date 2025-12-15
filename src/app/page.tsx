@@ -1,28 +1,41 @@
-import CountyAccordion from "@/components/CountyAccordion";
-import { getLocations } from "@/lib/data";
-import { getMunicipalityPaths } from "@/lib/company-data";
+import { getAllCounties } from "@/lib/company-data";
+import SwedenMap from "@/components/SwedenMap";
 import TrustpilotWidget from "@/components/TrustpilotWidget";
 import HeroCTA from "@/components/HeroCTA";
-import { CheckCircle2, ShieldCheck, Star } from "lucide-react";
+import { CheckCircle2, ShieldCheck } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
-  const locations = getLocations();
-  const activeSlugs = getMunicipalityPaths();
+  const counties = getAllCounties();
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative bg-[#0b1e33] text-white pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden flex flex-col justify-center min-h-[85vh]">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0f2842] via-[#0b1e33] to-[#081524] z-0"></div>
-        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[80px] animate-pulse"></div>
-        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-green-500/5 rounded-full blur-[80px]"></div>
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[#0b1e33]/80 z-10"></div> {/* Overlay to ensure text readability */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+            poster="/images/hero-poster.jpg"
+          >
+            <source src="/videos/hero-background.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        {/* Decorative Background Elements */}
+        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[80px] animate-pulse z-0 mix-blend-overlay"></div>
+        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-green-500/10 rounded-full blur-[80px] z-0 mix-blend-overlay"></div>
 
         <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl flex flex-col items-center flex-grow justify-center">
 
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-blue-900/40 backdrop-blur-sm border border-blue-800/50 rounded-full px-4 py-1.5 text-xs font-semibold text-blue-200 mb-8 animate-in fade-in slide-in-from-top-4 duration-700 shadow-lg">
+          <div className="inline-flex items-center gap-2 bg-blue-900/60 backdrop-blur-md border border-white/10 rounded-full px-4 py-1.5 text-xs font-semibold text-blue-100 mb-8 animate-in fade-in slide-in-from-top-4 duration-700 shadow-lg">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -31,7 +44,7 @@ export default function Home() {
           </div>
 
           {/* Headlines */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-[1] animate-in zoom-in-95 duration-700 delay-100">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-[1] animate-in zoom-in-95 duration-700 delay-100 drop-shadow-lg">
             Få upp till 5 offerter från <br className="hidden md:block" />
             <span className="text-white">granskade målare</span>
           </h1>
@@ -41,26 +54,24 @@ export default function Home() {
             alt="Målarnas.se"
             className="w-0 h-0 opacity-0 absolute"
             aria-hidden="true"
-          /* Hidden semantic logo for SEO structure if needed, but visual hierarchy is key here */
           />
 
-          {/* Subtitle/Text - removed to match the extremely clean reference look if strictly following image, but keeping for UX/SEO is better. I will minimize it. */}
-          <p className="text-lg md:text-xl text-blue-200/80 mb-10 max-w-2xl mx-auto font-medium animate-in fade-in slide-in-from-bottom-2 duration-700 delay-150">
+          <p className="text-lg md:text-xl text-blue-100/90 mb-10 max-w-2xl mx-auto font-medium animate-in fade-in slide-in-from-bottom-2 duration-700 delay-150 drop-shadow-md">
             Skapa en kostnadsfri förfrågan på några minuter. Vi matchar dig med kvalitetssäkrade målerifirmor i ditt område.
           </p>
 
-          {/* Value Props Pills - More subtle */}
-          <div className="flex flex-wrap justify-center gap-6 mb-12 text-sm font-semibold text-blue-200/90 animate-in fade-in slide-in-from-bottom-3 duration-700 delay-200">
+          {/* Value Props Pills */}
+          <div className="flex flex-wrap justify-center gap-6 mb-12 text-sm font-semibold text-white/90 animate-in fade-in slide-in-from-bottom-3 duration-700 delay-200 drop-shadow-sm">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="text-green-500 w-4 h-4 fill-green-500/20" />
+              <CheckCircle2 className="text-green-400 w-4 h-4 fill-green-400/20" />
               Kostnadsfritt
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="text-green-500 w-4 h-4 fill-green-500/20" />
+              <CheckCircle2 className="text-green-400 w-4 h-4 fill-green-400/20" />
               Inga köpkrav
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="text-green-500 w-4 h-4 fill-green-500/20" />
+              <CheckCircle2 className="text-green-400 w-4 h-4 fill-green-400/20" />
               Tryggt & säkert
             </div>
           </div>
@@ -69,7 +80,7 @@ export default function Home() {
           <HeroCTA />
 
           {/* Trust Indicators */}
-          <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 opacity-80">
+          <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 opacity-90">
             <TrustpilotWidget />
           </div>
         </div>
@@ -191,7 +202,7 @@ export default function Home() {
               { title: "Inomhusmålning", img: "/images/lan/interior-living-room.png", desc: "Väggar, tak och golv." },
               { title: "Fasadmålning", img: "/images/lan/exterior-red-house.jpg", desc: "Skydda huset & ge det nytt liv." },
               { title: "Tapetsering", img: "/images/lan/interior-green-room.png", desc: "Mönsterpassning & väv." },
-              { title: "Snickerimålning", img: "/images/lan/interior-living-room.png", desc: "Kök, dörrar och fönster." } // Reusing img for now
+              { title: "Snickerimålning", img: "/images/lan/interior-living-room.png", desc: "Kök, dörrar och fönster." }
             ].map((service, idx) => (
               <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all h-80">
                 <Image
@@ -213,16 +224,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Counties Section */}
+      {/* Counties Section - Replaced with Map + List */}
       <section id="counties" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Vi finns i hela Sverige</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Oavsett var du bor kan vi hjälpa dig hitta lokala målare. Välj ditt län nedan för att komma vidare.
+              Oavsett var du bor kan vi hjälpa dig hitta lokala målare. Klicka på kartan eller välj ditt län nedan.
             </p>
           </div>
-          <CountyAccordion locations={locations} activeSlugs={activeSlugs} />
+
+          <div className="flex flex-col lg:flex-row gap-12 items-start max-w-6xl mx-auto">
+            <div className="w-full lg:w-1/2">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {counties.map(county => (
+                  <li key={county.slug}>
+                    <Link
+                      href={`/malerifirma/${county.slug}`}
+                      className="flex items-center justify-between p-3 border rounded-lg hover:border-blue-500 hover:bg-white transition-colors bg-white/80 text-gray-800 shadow-sm"
+                    >
+                      <span>{county.name}</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-gray-400">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                      </svg>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="w-full lg:w-1/2 flex justify-center bg-white rounded-2xl p-4 md:p-8 border border-gray-200 shadow-sm">
+              <SwedenMap />
+            </div>
+          </div>
+
         </div>
       </section>
 
