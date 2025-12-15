@@ -142,7 +142,7 @@ export default async function CountyPage({ params }: Props) {
                                     height={400}
                                     className="rounded-xl shadow-md w-full h-64 object-cover hover:scale-[1.02] transition-transform duration-300"
                                 />
-                                <figcaption className="text-sm text-gray-500 mt-2 text-center italic">Förnya hemmet med professionell inomhusmålning</figcaption>
+                                <figcaption className="text-sm text-gray-500 mt-2 text-center italic">Förnya hemmet med professionell hjälp i {county.name}</figcaption>
                             </figure>
                             <figure>
                                 <Image
@@ -152,7 +152,7 @@ export default async function CountyPage({ params }: Props) {
                                     height={400}
                                     className="rounded-xl shadow-md w-full h-64 object-cover hover:scale-[1.02] transition-transform duration-300"
                                 />
-                                <figcaption className="text-sm text-gray-500 mt-2 text-center italic">Vi hjälper dig med allt från spackling till finish</figcaption>
+                                <figcaption className="text-sm text-gray-500 mt-2 text-center italic">Vi matchar dig med rätt målare i {county.name}</figcaption>
                             </figure>
                         </section>
 

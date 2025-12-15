@@ -168,7 +168,7 @@ export default async function MunicipalityPage({ params }: { params: Promise<{ l
                                     height={400}
                                     className="rounded-xl shadow-md w-full h-64 object-cover hover:scale-[1.02] transition-transform duration-300"
                                 />
-                                <figcaption className="text-sm text-gray-500 mt-2 text-center italic">Förnya hemmet med professionell hjälp</figcaption>
+                                <figcaption className="text-sm text-gray-500 mt-2 text-center italic">Förnya hemmet med professionell hjälp i {cityName}</figcaption>
                             </figure>
                             <figure>
                                 <Image
@@ -178,7 +178,7 @@ export default async function MunicipalityPage({ params }: { params: Promise<{ l
                                     height={400}
                                     className="rounded-xl shadow-md w-full h-64 object-cover hover:scale-[1.02] transition-transform duration-300"
                                 />
-                                <figcaption className="text-sm text-gray-500 mt-2 text-center italic">Vi matchar dig med rätt målare</figcaption>
+                                <figcaption className="text-sm text-gray-500 mt-2 text-center italic">Vi matchar dig med rätt målare i {cityName}</figcaption>
                             </figure>
                         </section>
 
