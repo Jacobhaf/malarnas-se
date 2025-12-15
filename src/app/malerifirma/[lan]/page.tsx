@@ -7,6 +7,8 @@ import Image from 'next/image';
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LeadForm from "@/components/LeadForm";
 import TrustpilotWidget from "@/components/TrustpilotWidget";
+import FaqSection from "@/components/FaqSection";
+import { getFaqData } from "@/lib/faq-data";
 
 interface Props {
     params: Promise<{ lan: string }>;
@@ -232,6 +234,8 @@ export default async function CountyPage({ params }: Props) {
                                 <figcaption className="text-xs text-gray-500 mt-2 text-center">Detaljmålning</figcaption>
                             </figure>
                         </section>
+
+                        <FaqSection items={getFaqData(county.name)} areaName={county.name} />
 
                         {/* How it works */}
                         <section className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">

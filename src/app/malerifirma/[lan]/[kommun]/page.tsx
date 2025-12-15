@@ -12,6 +12,9 @@ import { notFound } from "next/navigation";
 import Image from 'next/image';
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 
+import FaqSection from "@/components/FaqSection";
+import { getFaqData } from "@/lib/faq-data";
+
 // Generate static params for all municipality+county pairs
 export async function generateStaticParams() {
     return getMunicipalityParams();
@@ -79,29 +82,8 @@ export default async function MunicipalityPage({ params }: { params: Promise<{ l
         { label: cityName, url: `/malerifirma/${lan}/${kommun}` }
     ];
 
-    // FAQ Schema
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": `Finns det bra målare i ${cityName}?`,
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": `Ja, vi hjälper dig att komma i kontakt med certifierade målerifirmor i ${cityName} som kan hjälpa dig med allt från tapetsering till fasadmålning.`
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Hur begär jag en offert?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Klicka på 'Begär offert' eller använd vårt allmänna formulär för att få svar från upp till 4 olika aktörer i ${cityName}."
-                }
-            }
-        ]
-    };
+    // FAQ Data
+    const faqItems = getFaqData(cityName);
 
     // SEO Data from County (reuse climate text etc)
     const countySeo = COUNTY_SEO_DATA[lan] || { climateText: 'lokala förhållanden' };
@@ -123,7 +105,7 @@ export default async function MunicipalityPage({ params }: { params: Promise<{ l
                     })
                 }}
             />
-            <SchemaMarkup schema={faqSchema} />
+            {/* FaqSection handles its own schema */}
 
             {/* Hero Section */}
             <div className="bg-gray-900 text-white py-16 md:py-24 relative overflow-hidden">
@@ -279,6 +261,8 @@ export default async function MunicipalityPage({ params }: { params: Promise<{ l
                                 </p>
                             </div>
                         )}
+
+                        <FaqSection items={faqItems} areaName={cityName} />
 
                         {/* How it works */}
                         <section className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
