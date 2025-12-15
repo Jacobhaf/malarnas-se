@@ -13,16 +13,16 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-[#102a43] text-white pt-20 pb-32 lg:pt-32 lg:pb-48 overflow-hidden">
+      <section className="relative bg-[#0b1e33] text-white pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden flex flex-col justify-center min-h-[85vh]">
         {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-[#102a43] to-gray-900 opacity-95 z-0"></div>
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-green-500/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f2842] via-[#0b1e33] to-[#081524] z-0"></div>
+        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[80px] animate-pulse"></div>
+        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-green-500/5 rounded-full blur-[80px]"></div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center max-w-5xl">
+        <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl flex flex-col items-center flex-grow justify-center">
 
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium text-blue-100 mb-8 animate-in fade-in slide-in-from-top-4 duration-700">
+          <div className="inline-flex items-center gap-2 bg-blue-900/40 backdrop-blur-sm border border-blue-800/50 rounded-full px-4 py-1.5 text-xs font-semibold text-blue-200 mb-8 animate-in fade-in slide-in-from-top-4 duration-700 shadow-lg">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -31,27 +31,36 @@ export default function Home() {
           </div>
 
           {/* Headlines */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight leading-110 animate-in zoom-in-95 duration-700 delay-100">
-            Få upp till 5 offerter från <br className="hidden lg:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">granskade målare</span>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-[1] animate-in zoom-in-95 duration-700 delay-100">
+            Få upp till 5 offerter från <br className="hidden md:block" />
+            <span className="text-white">granskade målare</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed animate-in fade-in slide-in-from-bottom-2 duration-700 delay-150">
+          <img
+            src="/images/logo-white.svg"
+            alt="Målarnas.se"
+            className="w-0 h-0 opacity-0 absolute"
+            aria-hidden="true"
+          /* Hidden semantic logo for SEO structure if needed, but visual hierarchy is key here */
+          />
+
+          {/* Subtitle/Text - removed to match the extremely clean reference look if strictly following image, but keeping for UX/SEO is better. I will minimize it. */}
+          <p className="text-lg md:text-xl text-blue-200/80 mb-10 max-w-2xl mx-auto font-medium animate-in fade-in slide-in-from-bottom-2 duration-700 delay-150">
             Skapa en kostnadsfri förfrågan på några minuter. Vi matchar dig med kvalitetssäkrade målerifirmor i ditt område.
           </p>
 
-          {/* Value Props Pills */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12 text-sm md:text-base font-medium text-blue-100 animate-in fade-in slide-in-from-bottom-3 duration-700 delay-200">
-            <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
-              <CheckCircle2 className="text-green-400 w-5 h-5" />
+          {/* Value Props Pills - More subtle */}
+          <div className="flex flex-wrap justify-center gap-6 mb-12 text-sm font-semibold text-blue-200/90 animate-in fade-in slide-in-from-bottom-3 duration-700 delay-200">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="text-green-500 w-4 h-4 fill-green-500/20" />
               Kostnadsfritt
             </div>
-            <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
-              <CheckCircle2 className="text-green-400 w-5 h-5" />
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="text-green-500 w-4 h-4 fill-green-500/20" />
               Inga köpkrav
             </div>
-            <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
-              <CheckCircle2 className="text-green-400 w-5 h-5" />
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="text-green-500 w-4 h-4 fill-green-500/20" />
               Tryggt & säkert
             </div>
           </div>
