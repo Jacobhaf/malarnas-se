@@ -87,7 +87,7 @@ export default function Home() {
       </section>
 
       {/* Intro / Vision Section */}
-      <section className="py-20 lg:py-28 bg-white relative">
+      <section className="py-20 lg:py-28 bg-gradient-to-b from-white to-blue-50/50 relative">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
@@ -138,18 +138,18 @@ export default function Home() {
       </section>
 
       {/* How it Works (Process) */}
-      <section className="py-20 bg-gray-50 border-y border-gray-100">
+      <section className="py-24 bg-[#0f253a] text-white relative border-y border-white/5">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Hur fungerar det?</h2>
-            <p className="text-xl text-gray-600">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Hur fungerar det?</h2>
+            <p className="text-xl text-blue-200">
               Vår tjänst är utformad för att vara så enkel och effektiv som möjligt. Från idé till offert på några minuter.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 relaltive">
             {/* Connector Line (Desktop) */}
-            <div className="hidden md:block absolute top-[var(--y-center)] left-0 w-full h-1 bg-blue-100 -z-10"></div>
+            <div className="hidden md:block absolute top-[var(--y-center)] left-0 w-full h-1 bg-blue-800/50 -z-10"></div>
 
             {/* Step 1 */}
             <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all border border-gray-100 relative group">
@@ -188,7 +188,7 @@ export default function Home() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Vad behöver du hjälp med?</h2>
@@ -225,7 +225,7 @@ export default function Home() {
       </section>
 
       {/* Counties Section - Replaced with Map + List */}
-      <section id="counties" className="py-20 bg-gray-50">
+      <section id="counties" className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Vi finns i hela Sverige</h2>
