@@ -44,7 +44,8 @@ export default async function ArticlePage({ params }: Props) {
                     src={article.image}
                     alt={article.title}
                     fill
-                    className="object-cover blur-[2px] scale-105 brightness-[0.3]"
+                    className="object-cover blur-[2px] brightness-[0.3]"
+                    sizes="100vw"
                     priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-gray-900/90"></div>
@@ -78,6 +79,7 @@ export default async function ArticlePage({ params }: Props) {
                                     alt={article.title}
                                     fill
                                     className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
                                     priority
                                 />
                             </div>
@@ -121,6 +123,7 @@ export default async function ArticlePage({ params }: Props) {
                                                     src={item.image}
                                                     alt={item.title}
                                                     fill
+                                                    sizes="80px"
                                                     className="object-cover group-hover:scale-110 transition-transform duration-300"
                                                 />
                                             </div>
