@@ -23,7 +23,6 @@ export default function Home() {
             playsInline
             preload="auto"
             className="w-full h-full object-cover"
-            poster="/images/hero-poster.jpg"
           >
             <source src="/videos/hero-background.mp4?v=2" type="video/mp4" />
           </video>

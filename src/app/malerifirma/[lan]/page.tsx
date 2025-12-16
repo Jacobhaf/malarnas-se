@@ -100,8 +100,20 @@ export default async function CountyPage({ params }: Props) {
             />
 
             {/* Hero Section */}
-            <div className="bg-gray-900 text-white py-16 md:py-24 relative overflow-hidden">
-                <div className="absolute inset-0 bg-blue-900/20 z-0"></div>
+            <div className="bg-[#0b1e33] text-white py-16 md:py-24 relative overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute inset-0 bg-[#0b1e33]/80 z-10"></div>
+                    <video
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="auto"
+                        className="w-full h-full object-cover"
+                    >
+                        <source src="/videos/hero-background.mp4?v=2" type="video/mp4" />
+                    </video>
+                </div>
                 <div className="container mx-auto px-4 relative z-10">
                     <Breadcrumbs
                         items={[
