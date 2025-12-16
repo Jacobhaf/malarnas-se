@@ -26,6 +26,7 @@ export default function Footer() {
                         <ul className="space-y-2">
                             <li><Link href="/" className="hover:text-white transition-colors">Startsida</Link></li>
                             <li><Link href="/#counties" className="hover:text-white transition-colors">Hitta målare</Link></li>
+                            <li><Link href="/artiklar" className="hover:text-white transition-colors">Artiklar</Link></li>
                             <li><Link href="/integritetspolicy" className="hover:text-white transition-colors">Integritetspolicy</Link></li>
                             <li><Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link></li>
                             <li><Link href="/heta-jobb" className="hover:text-white transition-colors">Heta jobb</Link></li>
