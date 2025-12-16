@@ -9,207 +9,145 @@ export interface Article {
 export const ARTICLES: Article[] = [
     {
         slug: "inomhusmalning",
-        title: "Inomhusmålning – ge ditt hem nytt liv med professionell målning",
-        description: "Att måla om inomhus är ett av de mest effektiva sätten att förnya ett hem. Rätt färg, korrekt utfört arbete och noggranna förberedelser kan göra enorm skillnad.",
+        title: "Inomhusmålning – guide till ett perfekt resultat",
+        description: "Ska du måla om hemma? Här går vi igenom allt du behöver veta om inomhusmålning, från färgval och förarbete till kostnad och varför proffshjälp lönar sig.",
         image: "/images/artiklar/inomhus.png",
         content: `
-            <p>Att måla om inomhus är ett av de mest effektiva sätten att förnya ett hem. Rätt färg, korrekt utfört arbete och noggranna förberedelser kan göra enorm skillnad för både känsla och helhetsintryck. Oavsett om det gäller en hel lägenhet, ett enskilt rum eller mindre detaljer är professionell inomhusmålning en investering som lönar sig.</p>
+            <p className="lead">Att måla om inomhus är ett av de mest kostnadseffektiva sätten att förnya sitt hem. Oavsett om det handlar om att ljusa upp ett vardagsrum, ge sovrummet en harmonisk känsla eller fräscha upp en hel lägenhet, så gör rätt färgval och utförande en enorm skillnad. Här guidar vi dig genom processen.</p>
 
-            <h3>Vad ingår i inomhusmålning?</h3>
-            <p>Inomhusmålning är mer än att bara applicera färg på väggarna. Ett väl utfört arbete inkluderar bland annat:</p>
+            <h2>Därför är förarbetet avgörande</h2>
+            <p>Många lockas av att börja måla direkt, men hemligheten bakom ett proffsigt resultat ligger i förarbetet. Utan noggranna förberedelser kommer slutresultatet att avslöja ojämnheter och skavanker.</p>
             <ul>
-                <li>Skydd av golv, möbler och ytor</li>
-                <li>Spackling av hål och ojämnheter</li>
-                <li>Slipning för slät finish</li>
-                <li>Grundmålning vid behov</li>
-                <li>Slutmålning med rätt teknik och färgval</li>
-            </ul>
-            <p>Det är just förarbetet som avgör slutresultatet – och som ofta underskattas vid egen målning.</p>
-
-            <h3>Fördelar med att anlita professionell målare</h3>
-            <p>Att anlita en erfaren målare sparar både tid och frustration. Du får:</p>
-            <ul>
-                <li>Ett jämnt och hållbart resultat</li>
-                <li>Rätt färgtyp för rätt rum</li>
-                <li>Effektiv arbetsprocess</li>
-                <li>Mindre spill och kladd</li>
-                <li>Garanti på arbetet</li>
-            </ul>
-            <p>Professionella målare vet hur olika underlag beter sig och hur ljus påverkar färgval – något som är svårt att läsa sig till.</p>
-
-            <h3>Vanliga rum som målas om</h3>
-            <p>Inomhusmålning är vanligt i:</p>
-            <ul>
-                <li><strong>Vardagsrum</strong> – för ett fräscht och inbjudande helhetsintryck</li>
-                <li><strong>Sovrum</strong> – lugna färger för bättre trivsel</li>
-                <li><strong>Kök</strong> – färger som tål fukt och slitage</li>
-                <li><strong>Hall</strong> – slitstarka ytor som håller över tid</li>
+                <li><strong>Skyddstäckning:</strong> Golv, lister och möbler måste skyddas noga för att undvika färgstänk.</li>
+                <li><strong>Rengöring:</strong> Feta fläckar och damm gör att färgen fäster dåligt. Målartvätt är ofta nödvändigt.</li>
+                <li><strong>Spackling och slipning:</strong> Skruvhål, sprickor och skarvar måste spacklas och slipas för att ytan ska bli helt slät.</li>
             </ul>
 
-            <h3>Vad kostar inomhusmålning?</h3>
-            <p>Priset på inomhusmålning beror på flera faktorer:</p>
+            <h2>Välja rätt färg och glans</h2>
+            <p>Valet av kulör är viktigt, men glansgraden spelar också stor roll för både utseende och funktion.</p>
             <ul>
-                <li>Ytans storlek</li>
-                <li>Skick på väggar och tak</li>
-                <li>Färgtyp och kulör</li>
-                <li>Antal lager</li>
-                <li>Om ROT-avdrag används</li>
-            </ul>
-            <p>För bästa pris är det klokt att jämföra offerter från flera målare.</p>
-
-            <h3>Tips innan du målar om</h3>
-            <ul>
-                <li>Provstryk alltid färgen</li>
-                <li>Tänk på hur dagsljus påverkar kulören</li>
-                <li>Planera arbetet rum för rum</li>
-                <li>Se till att offerten är tydlig</li>
+                <li><strong>Matt färg (Glans 3-5):</strong> Vanligt i tak och ofta på väggar i vardagsrum och sovrum. Ger ett lugnt intryck och döljer ojämnheter bra, men är känsligare för avtorkning.</li>
+                <li><strong>Halvmatt/Silkesmatt (Glans 7-20):</strong> Standard för väggar i kök, hall och barnrum. Tål avtorkning bättre.</li>
+                <li><strong>Halvblank/Blank (Glans 40+):</strong> Används oftast till snickerier, lister och våtrum för maximal slittålighet och fuktskydd.</li>
             </ul>
 
-            <h3>Vill du komma igång?</h3>
-            <p>Genom att jämföra offerter från erfarna målare får du rätt pris och tryggt resultat – utan överraskningar.</p>
+            <h2>Vad kostar det att anlita en målare?</h2>
+            <p>Priset för inomhusmålning varierar beroende på ytans storlek, takhöjd, antal snickerier och hur mycket förarbete som krävs. Generellt kan du räkna med ett timpris på cirka 500–700 kr innan ROT-avdrag. Kom ihåg att ROT-avdraget ger dig 30% avdrag på arbetskostnaden, vilket gör det mycket prisvärt att anlita hjälp.</p>
+
+            <h3>Fördelar med professionell hjälp</h3>
+            <p>Att anlita en målerifirma handlar inte bara om att spara tid. Det handlar om trygghet.</p>
+            <ul>
+                <li><strong>Fackmannamässigt utförande:</strong> Raka linjer, jämna ytor och inga rinnande droppar.</li>
+                <li><strong>Effektivitet:</strong> Proffs arbetar snabbt och strukturerat.</li>
+                <li><strong>Garanti:</strong> Seriösa målare lämnar garanti på sitt arbete.</li>
+            </ul>
+
+            <h2>Checklista inför offerförfrågan</h2>
+            <p>När du begär offerter via Målarnas.se, försök att vara så tydlig som möjligt:</p>
+            <ul>
+                <li>Hur stor är ytan (kvadratmeter golvyta)?</li>
+                <li>Ingår takmålning?</li>
+                <li>Ska lister, dörrar eller element målas?</li>
+                <li>Hur är skicket idag? Behövs mycket spackling eller tapetnedtagning?</li>
+            </ul>
         `
     },
     {
         slug: "fasadmalning",
         title: "Fasadmålning – skydda huset och höj värdet",
-        description: "En välmålad fasad handlar inte bara om utseende. Det skyddar huset mot väder, fukt och slitage samtidigt som fastighetens värde bevaras.",
+        description: "Fasadmålning är husets viktigaste underhåll. Läs om olika färgtyper, när det är dags att måla om och hur du säkerställer att fasaden håller i många år.",
         image: "/images/artiklar/fasad.png",
         content: `
-            <p>Fasadmålning handlar inte bara om utseende. En välmålad fasad skyddar huset mot väder, fukt och slitage samtidigt som fastighetens värde bevaras. I det svenska klimatet är rätt utförd fasadmålning avgörande för husets livslängd.</p>
+            <p className="lead">En nymålad fasad är vacker att se på, men det primära syftet med fasadmålning är skydd. Sol, vind, regn och kyla sliter hårt på huset året runt. Att måla om i tid är en investering som förebygger dyra skador som fukt och röta.</p>
 
-            <h3>Varför är fasadmålning så viktigt?</h3>
-            <p>Med tiden bryts färg och trä ner av sol, regn och temperaturväxlingar. Utan regelbundet underhåll riskerar fasaden sprickor, röta och fuktskador – problem som snabbt blir kostsamma.</p>
-
-            <h3>Olika typer av fasader</h3>
+            <h2>Hitta rätt färgtyp till ditt hus</h2>
+            <p>Att välja rätt färgtyp är kritiskt. Du bör i regel fortsätta med samma typ av färg som huset tidigare målats med för att undvika problem.</p>
             <ul>
-                <li><strong>Träfasad</strong> – kräver regelbundet underhåll och rätt färgtyp</li>
-                <li><strong>Putsfasad</strong> – känslig för sprickor och fukt</li>
-                <li><strong>Tegelfasad</strong> – målas mer sällan men kräver korrekt behandling</li>
+                <li><strong>Akrylatfärg (Plastfärg):</strong> Mycket vanlig idag. Håller kulören bra, torkar snabbt och kräver lite underhåll. Bildar en tät yta.</li>
+                <li><strong>Oljefärg/Alkydfärg:</strong> Tränger in bra i träet och ger en blankare yta som mattas med tiden. Bra skydd mot fukt.</li>
+                <li><strong>Slamfärg (t.ex. Falu Rödfärg):</strong> Klassisk svensk färg som låter träet andas. Kan endast målas på sågat virke eller ytor tidigare målade med slamfärg.</li>
+                <li><strong>Linoljefärg:</strong> Traditionell färg som tränger djupt in. Kräver mer arbetstid och torktid men åldras vackert.</li>
             </ul>
-            <p>Varje fasadtyp har sina egna krav när det gäller förarbete och färgval.</p>
 
-            <h3>Hur ofta behöver man måla om fasaden?</h3>
-            <p>Generellt gäller följande intervaller:</p>
-            <ul>
-                <li>Träfasad: var 8–12 år</li>
-                <li>Putsfasad: var 12–20 år</li>
-                <li>Obehandlade ytor kan behöva åtgärdas oftare</li>
-            </ul>
-            <p>Placering, väderstreck och tidigare färgval påverkar intervallen.</p>
+            <h2>När ska man måla fasaden?</h2>
+            <p>Den bästa tiden för utomhusmålning är oftast sen vår, sommar och tidig höst. Du vill ha torrt väder och en dygnstemperatur som inte understiger 7–10 grader. Undvik att måla i direkt starkt solsken då färgen kan torka för snabbt och få blåsor.</p>
 
-            <h3>Arbetsprocess vid fasadmålning</h3>
-            <ul>
-                <li>Tvätt och rengöring</li>
-                <li>Skrapning och slipning</li>
-                <li>Grundmålning</li>
-                <li>Slutmålning i rätt väderförhållanden</li>
-            </ul>
-            <p>Noggrannhet i varje steg är avgörande för ett hållbart resultat.</p>
+            <h2>Steg för steg: Så gör proffsen</h2>
+            <ol>
+                <li><strong>Besiktning:</strong> Kontroll av fasadens skick. Finns det ruttet trä som måste bytas?</li>
+                <li><strong>Tvättning:</strong> Fasadtvätt är obligatoriskt för att få bort smuts, alger och mögelsporer.</li>
+                <li><strong>Skrapning och slipning:</strong> Lös färg skrapas bort för att den nya färgen ska fästa.</li>
+                <li><strong>Grundolja och grundfärg:</strong> Speciellt viktigt på ändträ och trärena ytor.</li>
+                <li><strong>Målning:</strong> Oftast två strykningar för fullgott skydd och täckning.</li>
+            </ol>
 
-            <h3>Kostnad och ROT-avdrag</h3>
-            <p>Priset på fasadmålning beror på:</p>
-            <ul>
-                <li>Husets storlek</li>
-                <li>Fasadmateriel</li>
-                <li>Tillgänglighet (ställning/lift)</li>
-                <li>Arbetsinsats</li>
-            </ul>
-            <p>ROT-avdraget kan sänka arbetskostnaden avsevärt.</p>
+            <h2>Vad kostar fasadmålning?</h2>
+            <p>Kostnaden varierar stort beroende på husets storlek, behov av ställning eller skylift, samt fasadens skick. Det är ofta ett större projekt som tar en till två veckor för en villa. Kom ihåg att nyttja ROT-avdraget för att dra av 30% av arbetskostnaden.</p>
 
-            <h3>Jämför offerter innan du bestämmer dig</h3>
-            <p>Att ta in flera offerter ger bättre pris, tydligare villkor och tryggare val av målare.</p>
+            <p><strong>Tips:</strong> Var ute i god tid! Duktiga målare blir ofta uppbokade snabbt inför sommarsäsongen.</p>
         `
     },
     {
         slug: "tapetsering",
-        title: "Tapetsering – skapa karaktär och personlighet i hemmet",
-        description: "Tapetsering är ett effektivt sätt att ge ett rum helt ny känsla. Skapa allt från diskret elegans till tydliga uttryck med professionell hjälp.",
+        title: "Tapetsering – skapa karaktär och personlighet",
+        description: "Tapeter kan förändra ett rum helt. Lär dig om mönsterpassning, olika tapetkvaliteter och varför underarbetet är nyckeln till ett bubbelfritt resultat.",
         image: "/images/artiklar/tapetsering.png",
         content: `
-            <p>Tapetsering är ett effektivt sätt att ge ett rum helt ny känsla. Med dagens stora utbud av tapeter kan du skapa allt från diskret elegans till tydliga uttryck. Med professionell tapetsering blir resultatet snyggt, hållbart och exakt.</p>
+            <p className="lead">Med tapeter kan du skapa en atmosfär som färg sällan kan matcha. Från djärva mönster till diskreta strukturer – möjligheterna är oändliga. Men tapetsering kräver tålamod, precision och kunskap för att resultatet ska bli perfekt.</p>
 
-            <h3>Olika typer av tapeter</h3>
+            <h2>Non-woven, papper eller vinyl?</h2>
+            <p>Det finns olika typer av tapeter med olika egenskaper:</p>
             <ul>
-                <li>Papperstapet</li>
-                <li>Non-woven (easy-up)</li>
-                <li>Vinyl</li>
-                <li>Fototapet</li>
-                <li>Textiltapet</li>
-            </ul>
-            <p>Varje typ kräver sin teknik och sitt underlag.</p>
-
-            <h3>Varför anlita en tapetserare?</h3>
-            <p>Tapetsering kräver precision. Minsta snedhet syns direkt, särskilt vid mönsterpassning. En professionell tapetserare säkerställer:</p>
-            <ul>
-                <li>Perfekta skarvar</li>
-                <li>Rakt mönster</li>
-                <li>Slätt slutresultat</li>
-                <li>Tidsbesparing</li>
+                <li><strong>Non-woven (EasyUp):</strong> De flesta moderna tapeter är av denna typ. De är formstabila, enkla att sätta upp (limma direkt på väggen) och kräver ingen blötläggning.</li>
+                <li><strong>Papperstapet:</strong> Klassisk variant som ska förlimmas på baksidan och svälla innan uppsättning. Kräver mer teknik.</li>
+                <li><strong>Vinyltapet:</strong> Tålig och avtorkningsbar yta, perfekt för kök eller hall.</li>
+                <li><strong>Fototapet:</strong> Stora motiv som kräver exakt passning för att bilden ska bli hel.</li>
             </ul>
 
-            <h3>Förberedelser inför tapetsering</h3>
+            <h2>Hemligheten är en slät vägg</h2>
+            <p>En snygg tapet kan inte dölja en ful vägg. Tvärtom syns ojämnheter ofta igenom.</p>
             <ul>
-                <li>Gamla tapeter tas bort</li>
-                <li>Väggar spacklas och slipas</li>
-                <li>Underlaget grundas vid behov</li>
+                <li><strong>Ta bort gammal tapet:</strong> Om det sitter flera lager gammal tapet bör dessa ofta tas ner eller ångas bort.</li>
+                <li><strong>Bredspackling:</strong> På ojämna väggar, eller väggar med strukturtapet (t.ex. glasfiberväv), krävs ofta bredspackling för att få en helt slät yta.</li>
+                <li><strong>Grundmålning:</strong> Att grundmåla väggen innan tapetsering förhindrar att underlaget lyser igenom och gör att tapeten fäster bättre (samt blir enklare att ta ner i framtiden).</li>
             </ul>
-            <p>Ett bra underarbete är helt avgörande.</p>
 
-            <h3>Vad kostar tapetsering?</h3>
-            <p>Priset påverkas av:</p>
-            <ul>
-                <li>Tapettyp</li>
-                <li>Väggarnas skick</li>
-                <li>Mönsterpassning</li>
-                <li>Antal kvadratmeter</li>
-            </ul>
-            <p>Genom att jämföra offerter får du rätt pris och rätt hantverkare.</p>
+            <h2>Mönsterpassning – en konst</h2>
+            <p>Att sätta upp en enfärgad tapet är en sak. Att mönsterpassa en stormönstrad tapet över en hel vägg, runt hörn och vid fönster är betydligt svårare. Ett vanligt misstag vid gör-det-själv-arbete är att man inte räknar med spill vid mönsterpassning och står där med för lite tapet, eller att mönstret hamnar snett.</p>
 
-            <h3>Vill du ha ett perfekt resultat?</h3>
-            <p>Låt en erfaren tapetserare göra jobbet – och slipp frustration och sneda våder.</p>
+            <h2>Varför anlita proffs för tapetsering?</h2>
+            <p>En yrkesmålare ser till att våderna sitter rakt, att skarvarna blir osynliga (kant-i-kant) och att mönstret flödar perfekt genom rummet. Dessutom går arbetet snabbt. Du slipper kladd med lim, bubblor och veck.</p>
         `
     },
     {
         slug: "snickerimalning",
-        title: "Snickerimålning – detaljerna som gör skillnad",
-        description: "Snickerimålning omfattar målning av lister, dörrar, fönster och köksluckor. Det är detaljerna som avgör om ett rum känns genomarbetat.",
+        title: "Snickerimålning – detaljerna som gör helheten",
+        description: "Fräscha upp köksluckor, lister eller dörrar? Snickerimålning är ett hantverk som kräver noggrannhet. Läs om sprutlackering vs penselmålning här.",
         image: "/images/artiklar/snickerimalning.png",
         content: `
-            <p>Snickerimålning omfattar målning av lister, dörrar, fönster, trappräcken och köksluckor. Det är ofta dessa detaljer som avgör om ett rum känns genomarbetat eller inte. Snickerimålning kräver precision, rätt färg och rätt teknik.</p>
+            <p className="lead">Lister, dörrfoder, fönsterbrädor, köksluckor och garderober. Snickerierna är hemmets "ramverk". När dessa är slitna eller gulnade drar de ner intrycket av hela rummet, oavsett hur fina väggarna är. Nymålade snickerier ger en omedelbar känsla av nytt och fräscht.</p>
 
-            <h3>Vad räknas som snickerier?</h3>
+            <h2>Penselmålning eller sprutlackering?</h2>
+            <p>Det finns två huvudsakliga metoder för snickerimålning:</p>
+            <h3>1. Pensel- och rullmålning på plats</h3>
+            <p>Detta är vanligast för fasta snickerier som lister, karmar, trappor och fönster som inte kan monteras ner. En duktig målare använder penslar av hög kvalitet för att minimera penseldrag och få den där "flytande" ytan.</p>
+
+            <h3>2. Sprutlackering</h3>
+            <p>För lösa delar som köksluckor, lådfronter och innerdörrar är sprutlackering i verkstad oftast överlägset. Resultatet blir en helt slät, fabriksliknande finish som är extremt hållbar.</p>
+
+            <h2>Utmaningar med snickerimålning</h2>
+            <p>Snickerifärg är ofta blankare (halvblank/blank) än väggfärg, vilket gör att minsta dammkorn eller ojämnhet syns tydligare. Färgen har också andra egenskaper och kan vara svårare att stryka ut jämnt utan att den rinner.</p>
             <ul>
-                <li>Golv- och taklister</li>
-                <li>Dörrar och karmar</li>
-                <li>Fönsterbågar</li>
-                <li>Köksluckor</li>
-                <li>Garderobsdörrar</li>
+                <li><strong>Slipning:</strong> Ytan måste mattas ner ordentligt för att färgen ska bita.</li>
+                <li><strong>Kvistlack:</strong> På nytt trä måste kvistar lackas (ofta 2 gånger) för att inte kåda ska blöda igenom och ge gula fläckar.</li>
+                <li><strong>Mellanslipning:</strong> Proffs slipar ofta lätt mellan strykningarna för att få bort "resning" i träet och damm.</li>
             </ul>
 
-            <h3>Varför är snickerimålning extra krävande?</h3>
-            <p>Till skillnad från väggar syns minsta ojämnhet direkt. Penseldrag, rinningar eller damm i färgen försämrar helhetsintrycket.</p>
+            <h2>Renovera köket med färg</h2>
+            <p>Att lackera om köksluckorna är ett smart och miljövänligt alternativ till att byta ut hela köket. Det kostar en bråkdel av priset för ett nytt kök men ger känslan av en totalrenovering. Kombinera med nya handtag och nymålade väggar så har du ett "nytt" kök på en vecka.</p>
 
-            <h3>Arbetsprocess vid snickerimålning</h3>
-            <ul>
-                <li>Noggrann rengöring</li>
-                <li>Slipning</li>
-                <li>Grundmålning</li>
-                <li>Mellanslipning</li>
-                <li>Slutmålning med rätt glans</li>
-            </ul>
-            <p>Professionella målare använder ofta sprutlackering eller specialpenslar för bästa finish.</p>
-
-            <h3>Kostnad och tidsåtgång</h3>
-            <p>Priset beror på:</p>
-            <ul>
-                <li>Antal snickerier</li>
-                <li>Skick och tidigare behandling</li>
-                <li>Färgtyp och glansgrad</li>
-            </ul>
-            <p>Att måla snickerier själv är tidskrävande – proffs gör det snabbare och snyggare.</p>
-
-            <h3>Ett hem som känns nytt</h3>
-            <p>Med professionell snickerimålning lyfts hela bostaden, utan att du behöver renovera stort.</p>
+            <h2>Vi hjälper dig hitta rätt expertis</h2>
+            <p>Oavsett om du behöver precisionsmålning av stuckatur och lister, eller lackering av en hel köksinredning, hjälper Målarnas.se dig att hitta specialister på snickerimålning i ditt område.</p>
         `
     }
 ];
