@@ -36,8 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     return {
-        title: `Målerifirma ${county.name} - Jämför offerter från lokala målare`,
-        description: `Hitta kvalitetssäkrade målare i ${county.name}. Vi listar företag i alla kommuner i länet. Jämför offerter gratis & hitta rätt målerifirma för ditt jobb.`,
+        title: `Målerifirma ${county.name} – Jämför lokala målare (Gratis)`,
+        description: `Söker du målare i ${county.name}? Jämför offerter från seriösa målerifirmor för fasadmålning, tapetsering & inomhusmålning. Helt gratis!`,
     };
 }
 

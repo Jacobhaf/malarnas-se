@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lan: stri
     if (!company) return { title: 'Företaget hittades inte' };
 
     return {
-        title: `${company.name} – Målerifirma i ${company.city} | Målarnas`,
-        description: `Kontakta ${company.name} i ${company.city} för målning, tapetsering och renovering. Se kontaktuppgifter, omdömen och begär offert direkt.`,
+        title: `${company.name} i ${company.city} – Omdömen & Offert | Målarnas`,
+        description: `Är ${company.name} rätt målerifirma för dig? Läs omdömen, se organisationsnummer och begär kostnadsfri offert för målning i ${company.city} här.`,
         alternates: {
             canonical: `/malerifirma/${lan}/${kommun}/${slug}`
         }

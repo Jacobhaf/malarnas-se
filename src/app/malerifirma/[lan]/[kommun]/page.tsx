@@ -38,8 +38,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lan: stri
     const countyName = municipalityInfo.county;
 
     return {
-        title: `Målerifirma ${cityName} – Jämför målare & få offerter`,
-        description: `Hitta kvalitetssäkrade målare och målerifirmor i ${cityName}, ${countyName}. Jämför offerter, läs omdömen och se priser för fasadmålning och inomhusmålning i ${cityName}.`,
+        title: `Målare ${cityName} – Jämför bästa målerifirmorna gratis`,
+        description: `Behöver du målare i ${cityName}? Vi hjälper dig jämföra priser & omdömen på lokala målerifirmor för målning och tapetsering. Få 5 offerter gratis!`,
         alternates: {
             canonical: `/malerifirma/${lan}/${kommun}`
         }
