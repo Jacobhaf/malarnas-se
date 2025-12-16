@@ -2,6 +2,7 @@ import { getAllCounties } from "@/lib/company-data";
 import SwedenMap from "@/components/SwedenMap";
 import TrustpilotWidget from "@/components/TrustpilotWidget";
 import HeroCTA from "@/components/HeroCTA";
+import CountyListCollapsible from "@/components/CountyListCollapsible";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -236,21 +237,9 @@ export default function Home() {
 
           <div className="flex flex-col lg:flex-row gap-12 items-start max-w-6xl mx-auto">
             <div className="w-full lg:w-1/2">
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {counties.map(county => (
-                  <li key={county.slug}>
-                    <Link
-                      href={`/malerifirma/${county.slug}`}
-                      className="flex items-center justify-between p-3 border rounded-lg hover:border-blue-500 hover:bg-white transition-colors bg-white/80 text-gray-800 shadow-sm"
-                    >
-                      <span>{county.name}</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-gray-400">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                      </svg>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <div className="w-full lg:w-1/2">
+                <CountyListCollapsible counties={counties} />
+              </div>
             </div>
             <div className="w-full lg:w-1/2 flex justify-center bg-white rounded-2xl p-4 md:p-8 border border-gray-200 shadow-sm">
               <SwedenMap />
