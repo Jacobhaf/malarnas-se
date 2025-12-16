@@ -103,14 +103,14 @@ export default async function ArticlePage({ params }: Props) {
                     </div>
 
                     {/* Sidebar Column */}
-                    <aside className="lg:col-span-1 space-y-6">
+                    <aside className="lg:col-span-1">
                         {/* Lead Form Widget */}
-                        <div className="bg-white p-1 rounded-2xl shadow-lg border border-gray-100 sticky top-4">
+                        <div className="mb-8 relative z-20">
                             <LeadForm />
                         </div>
 
                         {/* Read More Widget */}
-                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative z-10">
                             <h3 className="text-lg font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
                                 Fler lästips
                             </h3>
