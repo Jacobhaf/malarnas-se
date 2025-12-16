@@ -2,6 +2,8 @@
 import { getAllCounties } from "@/lib/company-data";
 import SwedenMap from "@/components/SwedenMap";
 import CountyListCollapsible from "@/components/CountyListCollapsible";
+import LeadForm from "@/components/LeadForm";
+import RotCalculator from "@/components/RotCalculator";
 import Link from "next/link";
 import { Metadata } from 'next';
 
@@ -31,6 +33,11 @@ export default function MalerifirmaIndexPage() {
                             Klicka på kartan eller välj ditt län i listan nedan för att se tillgängliga orter och hitta lokala måleriföretag nära dig.
                         </p>
                         <CountyListCollapsible counties={counties} />
+
+                        <div className="mt-12 space-y-12">
+                            <LeadForm />
+                            <RotCalculator />
+                        </div>
                     </div>
                     <div className="w-full lg:w-1/2 flex justify-center bg-gray-50 rounded-2xl p-8 border border-gray-100">
                         <SwedenMap />
