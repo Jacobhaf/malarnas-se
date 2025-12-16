@@ -3,6 +3,8 @@ import SwedenMap from "@/components/SwedenMap";
 import TrustpilotWidget from "@/components/TrustpilotWidget";
 import HeroCTA from "@/components/HeroCTA";
 import CountyListCollapsible from "@/components/CountyListCollapsible";
+import LeadForm from "@/components/LeadForm";
+import RotCalculator from "@/components/RotCalculator";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -237,8 +239,10 @@ export default function Home() {
 
           <div className="flex flex-col lg:flex-row gap-12 items-start max-w-6xl mx-auto">
             <div className="w-full lg:w-1/2">
-              <div className="w-full lg:w-1/2">
-                <CountyListCollapsible counties={counties} />
+              <CountyListCollapsible counties={counties} />
+              <div className="mt-12 space-y-12">
+                <LeadForm />
+                <RotCalculator />
               </div>
             </div>
             <div className="w-full lg:w-1/2 flex justify-center bg-white rounded-2xl p-4 md:p-8 border border-gray-200 shadow-sm">
