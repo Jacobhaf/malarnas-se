@@ -75,15 +75,45 @@ export default function LeadForm() {
     }
 
     return (
-        <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
-            <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
-                Få offerter från målare
-            </h3>
-            <p className="text-gray-600 mb-5 text-center text-xs">
-                Beskriv ditt projekt och jämför priser helt kostnadsfritt.
-            </p>
+        <div className="bg-[#fff9f4] p-6 rounded-2xl shadow-lg border border-orange-100 max-w-xl mx-auto">
+            {/* Header Section */}
+            <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 mb-3">
+                    <span className="w-2 h-2 bg-orange-500 rounded-full"></span>
+                    Betala inte för mycket
+                </div>
+                <h3 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight mb-2">
+                    Få en <span className="underline decoration-orange-400 decoration-4 underline-offset-4 decoration-skip-ink">prispressad offert</span> för ditt måleriprojekt på 1 minut
+                </h3>
+                <p className="text-gray-600 font-medium">Jämför och spara pengar. Lokala proffs - hela Sverige.</p>
+            </div>
 
-            <form onSubmit={handleSubmit}>
+            {/* "Vi prispressar" Section */}
+            <div className="mb-8">
+                <div className="flex items-center gap-3 mb-2 justify-center md:justify-start">
+                    <div className="p-2 bg-white rounded-lg border border-gray-200 shadow-sm">
+                        <Layers className="w-6 h-6 text-gray-900" />
+                    </div>
+                </div>
+                <h4 className="text-2xl font-bold text-gray-900 mb-1">Vi prispressar åt dig</h4>
+                <div className="flex items-center gap-2 mb-4">
+                    <div className="flex text-yellow-400">
+                        {"★★★★★".split("").map((star, i) => (
+                            <span key={i}>{star}</span>
+                        ))}
+                    </div>
+                    <span className="text-sm font-bold text-gray-900">+500 offerter 2025</span>
+                </div>
+
+                <div className="space-y-3 text-sm text-gray-700">
+                    <p>1. Fyll i några enkla uppgifter om ditt projekt.</p>
+                    <p>2. Vi matchar dig med kvalitetssäkrade målerifirmor som erbjuder bäst pris.</p>
+                    <p>3. Välj hur du vill gå vidare, <span className="font-bold">utan köptvång!</span></p>
+                </div>
+            </div>
+
+            {/* Form Section */}
+            <form onSubmit={handleSubmit} className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 mb-8">
                 {/* Service Selection */}
                 <div className="mb-4">
                     <label className="block text-xs font-bold text-gray-700 mb-2">
@@ -235,6 +265,28 @@ export default function LeadForm() {
                     Tjänsten är kostnadsfri och ej bindande.
                 </p>
             </form>
+
+            {/* Bottom Trust Section */}
+            <div className="flex items-center gap-4">
+                <div className="relative w-16 h-16 shrink-0">
+                    <img
+                        src="/images/customer-service.png"
+                        alt="Kundservice"
+                        className="w-full h-full object-cover rounded-full border-2 border-white shadow-md"
+                    />
+                </div>
+                <div className="space-y-1 text-sm font-medium text-gray-700">
+                    <div className="flex items-center gap-2">
+                        <span className="text-orange-500 font-bold">✓</span> Vi gör jobbet åt dig
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <span className="text-orange-500 font-bold">✓</span> Inga krav. Inget krångel
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <span className="text-orange-500 font-bold">✓</span> Måleriarbete på dina villkor
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
