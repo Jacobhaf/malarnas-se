@@ -286,19 +286,7 @@ export default async function CountyPage({ params }: Props) {
                             </div>
                         </section>
 
-                        {/* Conclusion */}
-                        <section className="bg-blue-600 text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
-                            <div className="relative z-10 text-center">
-                                <h2 className="text-2xl font-bold mb-4">Starta ditt projekt idag</h2>
-                                <p className="text-blue-100 mb-6 text-lg">
-                                    Tusentals nöjda kunder i {county.name} har redan hittat sin målerifirma hos oss. Spara tid och pengar du också!
-                                </p>
-                                <p className="text-blue-100 mb-8 font-medium">
-                                    Begär din gratis offert nu – det tar bara ett par minuter att hitta den perfekta målerifirman i {county.name}!
-                                </p>
-                                <LeadForm />
-                            </div>
-                        </section>
+
                     </div>
 
                     {/* Sidebar */}

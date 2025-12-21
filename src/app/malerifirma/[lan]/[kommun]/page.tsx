@@ -347,16 +347,7 @@ export default async function MunicipalityPage({ params }: { params: Promise<{ l
                             </div>
                         </section>
 
-                        {/* Conclusion */}
-                        <section className="bg-green-600 text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
-                            <div className="relative z-10 text-center">
-                                <h2 className="text-2xl font-bold mb-4">Redo att sätta igång?</h2>
-                                <p className="text-green-100 mb-6 text-lg">
-                                    Slipp leta själv – låt målarna komma till dig. Tjänsten är helt gratis!
-                                </p>
-                                <LeadForm />
-                            </div>
-                        </section>
+
 
                     </div>
 
